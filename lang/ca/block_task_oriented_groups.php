@@ -24,14 +24,14 @@
  */
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Bloc per fer grups orientatas a tasques';
-$string['task_oriented_groups'] = 'Groups orientats a tasques';
+$string['pluginname'] = 'Bloc per fer grups orientats a tasques';
+$string['task_oriented_groups'] = 'Grups orientats a tasques';
 
 $string['settings:heading'] = 'Aquest bloc utilitza un servei extern per generar els grups per realitzar una tasca.';
 $string['settings:base_api_url_title'] = 'Base API URL';
 $string['settings:base_api_url_description'] = 'L\'URL del servidor que proporciona els serveis per generar grups per a una tasca.';
 
-$string['main:composite'] = 'Creeu un grup nou per tasca';
+$string['main:composite'] = 'Proposa grups idonis per a una determinada tasca';
 $string['main:fill_personality_test'] = 'Ompliu la vostra prova de personalitat';
 $string['main:my_personality'] = 'La meva personalitat';
 $string['main:my_intelligences'] = 'Les meves intel·ligències';
@@ -49,8 +49,8 @@ $string['personality_question_0_answer_1'] = 'Home';
 $string['personality_question_0_answer_2'] = 'Prefereixo no contestar';
 
 $string['personality_question_1'] = 'Els jutges han de ser';
-$string['personality_question_1_help'] = 'Exemple: Si un jutge jutja al teu germà, ha de seguir les lleis que valen per a tots per igual.';
-$string['personality_question_1_answer_0'] = 'Compasius';
+$string['personality_question_1_help'] = 'Exemple: Si un jutge jutja el teu germà, ha de seguir les lleis que valen per a tots per igual.';
+$string['personality_question_1_answer_0'] = 'Compassius';
 $string['personality_question_1_answer_1'] = 'Imparcials';
 $string['personality_question_1_answer_2'] = 'Depèn del cas';
 
@@ -124,7 +124,7 @@ $string['personality_question_13_answer_2'] = 'Indiferent';
 
 $string['personality_question_14'] = 'Ets més';
 $string['personality_question_14_answer_0'] = 'Silenciós';
-$string['personality_question_14_answer_1'] = 'Xarraire';
+$string['personality_question_14_answer_1'] = 'Xerraire';
 $string['personality_question_14_answer_2'] = 'Indiferent';
 
 $string['personality_question_15'] = 'Aprens millor';
@@ -166,7 +166,7 @@ $string['intelligences_test_title'] = 'Prova d\'intel·ligències';
 $string['intelligences_test_heading'] = 'Prova d\'intel·ligències';
 $string['intelligences_test_go_to_intelligences'] = 'Mostra les meves intel·ligències';
 
-$string['intelligence_question_0'] = 'No m\'és difícil dir el que penso en una discusió o debat.';
+$string['intelligence_question_0'] = 'No m\'és difícil dir el que penso en una discussió o debat.';
 $string['intelligence_question_0_help'] = 'Exemple: quan es discuteix sobre la independència de Catalunya, m\'agrada expressar la meva opinió.';
 $string['intelligence_question_answer_0'] = 'Totalment en desacord';
 $string['intelligence_question_answer_1'] = 'En desacord';
@@ -179,11 +179,11 @@ $string['intelligence_question_1_help'] = 'Exemple: Si em pregunten per un camí
 
 $string['intelligence_question_2'] = 'Si estic enfadat(da) o content(a) generalment sé exactamanet perquè';
 
-$string['intelligence_question_3'] = 'Sé tocar (o abans sabia tocar) un intrument musical';
+$string['intelligence_question_3'] = 'Sé tocar (o abans sabia tocar) un instrument musical';
 $string['intelligence_question_3_help'] = 'Exemple: sé tocar la guitarra.';
 
 $string['intelligence_question_4'] = 'Associo música amb els meus estats d\'ànim';
-$string['intelligence_question_4_help'] = 'Exemple: quan escolto reguetón em sento molt alegre i escolto hip-hop quan estic enfadat.';
+$string['intelligence_question_4_help'] = 'Exemple: quan escolto reggaeton em sento molt alegre i escolto hip-hop quan estic enfadat.';
 
 $string['intelligence_question_5'] = 'Puc sumar o multiplicar mentalment amb molta rapidesa';
 
@@ -209,7 +209,7 @@ $string['intelligence_question_12'] = 'Sóc sensible a les vistes, els sons i la
 $string['intelligence_question_13'] = 'La vida em sembla buida sense música';
 $string['intelligence_question_13_help'] = 'Exemple: Escolto música al tren.';
 
-$string['intelligence_question_14'] = 'Sempre entenc els gràfics que vénen en les intruccions d\'equips o instruments';
+$string['intelligence_question_14'] = 'Sempre entenc els gràfics que vénen en les instruccions d\'equips o instruments';
 $string['intelligence_question_14_help'] = 'Exemple: Sóc capaç de muntar un moble d\'Ikea.';
 
 $string['intelligence_question_15'] = 'M\'agrada resoldre trencaclosques i entretenir-me amb jocs electrònics';
@@ -217,19 +217,19 @@ $string['intelligence_question_15_help'] = 'Exemple: M\'agrada jugar al Monopoly
 
 $string['intelligence_question_16'] = 'Em va ser fàcil aprendre a anar amb bicicleta (o amb patins)';
 
-$string['intelligence_question_17'] = 'Em poso nerviós(osa) quan escolto una discució o afirmació que em sembla il·lògica';
+$string['intelligence_question_17'] = 'Em poso nerviós(osa) quan escolto una discussió o afirmació que em sembla il·lògica';
 $string['intelligence_question_17_help'] = 'Exemple: Em poso nerviós quan els meus pares no em deixa aixecar de la taula sense haver menjat tot encara que no tingui gana.';
 
-$string['intelligence_question_18'] = 'Soc capaç de convéncer d\'altres a seguir els meus plans';
+$string['intelligence_question_18'] = 'Soc capaç de convèncer d\'altres a seguir els meus plans';
 $string['intelligence_question_18_help'] = 'Exemple: quan estic amb amics, sóc capaç de convèncer per fer junts el que a mi més m\'agrada.';
 
-$string['intelligence_question_19'] = 'Tinc bon sentit d\'equilibri i cordinació';
+$string['intelligence_question_19'] = 'Tinc bon sentit d\'equilibri i coordinació';
 $string['intelligence_question_19_help'] = 'Exemple: Es em donen bé esports com el patinatge, la natació, l\'esquí.';
 
 $string['intelligence_question_20'] = 'Sovint veig configuracions i relacions entre nombres amb més rapidesa i facilitat que altres';
 $string['intelligence_question_20_help'] = 'Exemple: De seguida veig el següent número d\'una sèrie com 3, 6, 9, ...';
 
-$string['intelligence_question_21'] = 'M\'agrada construir models ( o escultures)';
+$string['intelligence_question_21'] = 'M\'agrada construir models (o escultures)';
 $string['intelligence_question_21_help'] = 'Exemple: M\'encanta construir figures de Lego.';
 
 $string['intelligence_question_22'] = 'Tinc facilitat per trobar el significat de les paraules';
@@ -314,7 +314,7 @@ $string['privacy:metadata:btog_intelligences:userid'] = 'Identificador de l\'usu
 $string['privacy:metadata:btog_intelligences:verbal'] = 'El factor d\'intel·ligència verbal de l\'usuari.';
 $string['privacy:metadata:btog_intelligences:logic_mathematics'] = 'El factor d\'intel·ligència lògica/matemàtica de l\'usuari.';
 $string['privacy:metadata:btog_intelligences:visual_spatial'] = 'El factor d\'intel·ligència visual/espacial de l\'usuari.';
-$string['privacy:metadata:btog_intelligences:kinestesica_corporal'] = 'El factor d\'intel·ligència corporal/kinestesica de l\'usuari.';
+$string['privacy:metadata:btog_intelligences:kinestesica_corporal'] = 'El factor d\'intel·ligència corporal/cinestèsica de l\'usuari.';
 $string['privacy:metadata:btog_intelligences:musical_rhythmic'] = 'El factor d\'intel·ligència musical/rítmica de l\'usuari.';
 $string['privacy:metadata:btog_intelligences:intrapersonal'] = 'El factor d\'intel·ligència intrapersonal de l\'usuari.';
 $string['privacy:metadata:btog_intelligences:interpersonal'] = 'El factor d\'intel·ligència interpersonal de l\'usuari.';
@@ -325,7 +325,7 @@ $string['personality_title'] = 'Personalitat';
 $string['personality_heading'] = 'Personalitat';
 $string['personality_go_to_test'] = 'Modifica la prova de personalitat';
 $string['personality_read_more'] = 'Llegeix més';
-$string['personality_msg'] = 'La vostra personalitat és {$a->type} ( {$a->name} ). {$a->description}';
+$string['personality_msg'] = 'La vostra personalitat és {$a->type} ({$a->name}). {$a->description}';
 $string['personality_ENFJ_description'] = 'Líders carismàtics i inspiradors, capaços de fascinar als seus oients.';
 $string['personality_ENFJ_more'] = 'https://www.16personalities.com/enfj-personality';
 $string['personality_ENFJ_name'] = 'El protagonista';
@@ -380,7 +380,7 @@ $string['intelligences_heading'] = 'Intel·ligències';
 $string['intelligences_msg'] = 'Les vostres intel·ligències són';
 $string['intelligences_value_0'] = 'Coneixement fonamental';
 $string['intelligences_value_1'] = 'Principiant';
-$string['intelligences_value_2'] = 'Intermig';
+$string['intelligences_value_2'] = 'Intermedi';
 $string['intelligences_value_3'] = 'Avançat';
 $string['intelligences_value_4'] = 'Expert';
 $string['intelligences_interpersonal_factor'] = 'Intel·ligència interpersonal';
@@ -412,12 +412,12 @@ $string['composite_column_personality_filled'] = 'L\'usuari ha completat la prov
 $string['composite_column_intelligences'] = 'Ompliu la prova d\'intel·ligències';
 $string['composite_column_intelligences_not_filled'] = 'L\'usuari no ha omplert la prova d\'intel·ligències';
 $string['composite_column_intelligences_filled'] = 'L\'usuari ha completat la prova d\'intel·ligències';
-$string['composite_column_send'] = 'Enviar missatge';
-$string['composite_column_send_alt'] = 'Envieu un missatge a l\'usuari que no hagi omplert la prova de personalitat o intel·ligència';
-$string['composite_unfilled_msg'] = 'Hi ha usuaris de {$a} que no han completat la prova de personalitat o intel·ligències. Sense aquesta informació, no és possible saber quin grup voleu, de manera que no s\'afegiran a cap grup. A la taula següent podeu saber qui són.';
+$string['composite_column_send'] = 'Envia missatge';
+$string['composite_column_send_alt'] = 'Envia un missatge a l\'usuari que no hagi omplert la prova de personalitat o intel·ligència';
+$string['composite_unfilled_msg'] = 'Hi ha {$a} usuari(s) que no han completat la prova de personalitat o intel·ligències. Sense aquesta informació no és possible assignar-los a cap grup. A la taula següent podeu veure quins usuars són els que quedarán sense assignar:';
 $string['composite_select_role_for_users'] = 'Selecciona membres amb funcions';
 $string['composite_select_role_for_users_help'] = 'Seleccioneu la funció dels membres que s\'han d\'utilitzar per formar els grups';
-$string['composite_send_selected'] = 'Enviar missatge a les seleccionades';
+$string['composite_send_selected'] = 'Envia un missatge als usuaris seleccionats';
 $string['composite_send_all'] = 'Envia un missatge a tothom';
 $string['composite_members_per_group_how_many_pattern'] = 'Podeu formar {{groups}} grups  amb {{size}} membres en cadascun d\'ells';
 $string['composite_members_per_group_how_many_pattern_2'] = 'Podeu formar {{groups1}} grups amb {{size1}} membres en cadascun i {{groups2}} grups amb {{size2}} membres en cadascun';
@@ -445,23 +445,23 @@ $string['composite_requirements_level'] = 'Nivell';
 $string['composite_requirements_level_help'] = 'El nivell d\'intel·ligència requerit';
 $string['composite_requirements_level_0'] = 'Coneixement fonamental';
 $string['composite_requirements_level_1'] = 'Principiant';
-$string['composite_requirements_level_2'] = 'Intermig';
+$string['composite_requirements_level_2'] = 'Intermedi';
 $string['composite_requirements_level_3'] = 'Avançat';
 $string['composite_requirements_level_4'] = 'Expert';
 $string['composite_requirements_none'] = 'De moment, la tasca no té requisits d\'intel·ligència. Els membres s\'agrupen segons el gènere i la personalitat.';
-$string['composite_requirements_pattern'] = 'Per a la intel·ligència {$a->factor} és {$a->importance} un nivell mínim de {$a->level} nivell';
+$string['composite_requirements_pattern'] = 'Per a la intel·ligència {$a->factor} és {$a->importance} tenir almenys un nivell {$a->level}';
 $string['composite_performance'] = 'Rendiment';
 $string['composite_performance_help'] = 'Definiu si voleu obtenir més rendiment o grups de baix rendiment';
 $string['composite_performance_over'] = 'Més rendiment';
 $string['composite_performance_under'] = 'Baixa comportament';
-$string['composite_submit'] = 'Grups compostos';
+$string['composite_submit'] = 'Composa els grups';
 $string['composite_progress'] = 'Càlcul';
 $string['composite_groups_error_title'] = 'Error';
-$string['composite_groups_error_text'] = 'No es pot calcular els grups.';
+$string['composite_groups_error_text'] = 'No es poden calcular els grups.';
 $string['composite_groups_error_continue'] = 'D\'acord';
 
-$string['externallib:group_description_reponsable_of'] = 'és reponsable de';
-$string['externallib:group_description_no_responsibility'] = 'no té reponmsabilitats al grup';
+$string['externallib:group_description_reponsable_of'] = 'és responsable de';
+$string['externallib:group_description_no_responsibility'] = 'no té responsabilitats al grup';
 $string['externallib:group_description_last_intelligence_and'] = 'i';
 $string['externallib:group_description_intelligence_interpersonal'] = 'Intel·ligència interpersonal';
 $string['externallib:group_description_intelligence_intrapersonal'] = 'Intel·ligència intrapersonal';
@@ -487,7 +487,7 @@ $string['feedback_test_heading'] = 'Proporcioneu informació sobre el rendiment 
 $string['feedback_question_0'] = 'El grup s\'ha organitzat i ha col·laborat, tothom s\'ha implicat en les tasques a fer';
 $string['feedback_question_1'] = 'Tot el grup ha parlat per tal de prendre acords i planificar les tasques';
 $string['feedback_question_2'] = 'El grup ha treballat de manera autònoma: els problemes han estat solucionats dins del grup, i les solucions s\'han trobat entre tots';
-$string['feedback_question_3'] = 'El grup ha fet una coevaluacio de manera crítica i responsable';
+$string['feedback_question_3'] = 'El grup ha fet una coavaluacio de manera crítica i responsable';
 $string['feedback_question_answer_0'] = 'Poc';
 $string['feedback_question_answer_1'] = 'Ni molt ni poc';
 $string['feedback_question_answer_2'] = 'Molt';
@@ -498,10 +498,10 @@ $string['feedback_test_groups_error_text'] = 'No es pot informar del rendiment d
 $string['feedback_test_groups_error_continue'] = 'D\'acord';
 $string['feedback_test_alert_no_capability'] = 'No teniu la capacitat per a informar del rendiment d\'un grup. Demaneu a l\'administrador els privilegis necessaris per fer-ho.';
 $string['feedback_test_alert_empty'] = 'No hi ha grups per informar del rendiment dels seus integrants.';
-$string['feedback_test_grouping_selector'] = 'Sel·leciona un conjunt de grups';
-$string['feedback_test_grouping_selector_help'] = 'Has de sel·lecionar el conjunt on està el grup que vols informar del rendiments dels seus integrants.';
-$string['feedback_test_group_selector'] = 'Sel·leciona un grup';
-$string['feedback_test_group_selector_help'] = 'Has de sel·lecionar el grup que vols informar del rendiments dels seus integrants.';
+$string['feedback_test_grouping_selector'] = 'Sel·lecciona un conjunt de grups';
+$string['feedback_test_grouping_selector_help'] = 'Has de sel·leccionar el conjunt on està el grup que vols informar del rendiments dels seus integrants.';
+$string['feedback_test_group_selector'] = 'Sel·lecciona un grup';
+$string['feedback_test_group_selector_help'] = 'Has de sel·leccionar el grup que vols informar del rendiments dels seus integrants.';
 $string['feedback_test_group'] = 'Grup';
-$string['feedback_test_group_help'] = 'Has de sel·lecionar el grup que vols informar del rendiments dels seus integrants.';
+$string['feedback_test_group_help'] = 'Has de sel·leccionar el grup que vols informar del rendiments dels seus integrants.';
 $string['feedback_test_alert_submit_success'] = 'S\'ha emmagatzemat la vostra opinió.';
