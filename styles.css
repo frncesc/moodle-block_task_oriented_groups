@@ -1,54 +1,54 @@
-.personality-questions {
+.block_task_oriented_group .personality-questions {
 	padding: 5px;
 }
 
-.personality-question {
+.block_task_oriented_group .personality-question {
 	padding: 10px;
 }
 
-.intelligences-questions {
+.block_task_oriented_group .intelligences-questions {
 	padding: 5px;
 }
 
-.intelligences-question {
+.block_task_oriented_group .intelligences-question {
 	padding: 10px;
 }
 
-.composite-requirements-select-max {
+.block_task_oriented_group .composite-requirements-select-max {
 	max-width: 280px !important;
 }
 
-.dotdotdot:after {
+.block_task_oriented_group .dotdotdot:after {
     font-weight: 300;
     content: '...';
     display: inline-block;
     width: 20px;
     text-align: left;
-    animation: dotdotdot 1.5s linear infinite;
+    animation: block_task_oriented_group-dotdotdot 1.5s linear infinite;
 }
 
-@keyframes dotdotdot {
+@keyframes block_task_oriented_group-dotdotdot {
   0%   { content: '...'; }
   25% { content: ''; }
   50% { content: '.'; }
   75% { content: '..'; }
 }
 
-.composite-progress {
+.block_task_oriented_group .composite-progress {
 	max-width: 300px;
 	margin:auto;
 }
 
-.composite-progress .progress-bar {
+.block_task_oriented_group .composite-progress .progress-bar {
 	width: 100%;
 }
 
-.feedback_test-progress {
+.block_task_oriented_group .feedback_test-progress {
 	max-width: 300px;
 	margin:auto;
 }
 
-.feedback_test-progress .progress-bar {
+.block_task_oriented_group .feedback_test-progress .progress-bar {
 	width: 100%;
 }
 
@@ -58,4 +58,23 @@
 
 .feedback-question {
 	padding: 10px;
+}
+
+.block_task_oriented_group .actions-row {
+	padding: 20px;
+}
+
+.block_task_oriented_group .actions-row .btn {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.block_task_oriented_group .blink {
+  animation: block_task_oriented_group-blinker 1s linear infinite;
+}
+
+@keyframes block_task_oriented_group-blinker {
+  50% {
+    opacity: 0;
+  }
 }

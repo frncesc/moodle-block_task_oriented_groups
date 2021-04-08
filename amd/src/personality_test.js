@@ -13,15 +13,23 @@
 /**
  * Javascript components used to manage the personality questionnaire answers.
  *
- * @package block_task_oriented_groups
+ * @package block_tog
  * @copyright 2018 UDT-IA, IIIA-CSIC
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 define([ 'jquery', 'core/ajax', 'core/str', 'core/notification' ], function($, ajax, str, notification) {
  return {
   initialise : function($params) {
+   console.debug("Personality test initialize with:" + $params);
+   $('.actions-row').find('.alert').hide();
    $('input:radio').click(function(event) {
     event.stopPropagation();
+		var actions = $('.actions-row');
+		var updating = Math.max(0,actions.attr('data-updating') || 0);
+		updating++;
+		actions.attr('data-updating', updating);
+		actions.find('button').hide();
+		actions.find('.alert').show();
     var inputId = $(this).attr('id');
     var start = inputId.indexOf('_') + 1;
     var end = inputId.indexOf('_', start);
@@ -29,7 +37,7 @@ define([ 'jquery', 'core/ajax', 'core/str', 'core/notification' ], function($, a
     start = inputId.lastIndexOf('_') + 1;
     var question = inputId.substring(start);
     var promises = ajax.call([ {
-      methodname : 'block_task_oriented_groups_store_personality_answer',
+      methodname : 'block_tog_store_personality_answer',
       args : {
         'answer' : answer,
         'question' : question
@@ -37,17 +45,27 @@ define([ 'jquery', 'core/ajax', 'core/str', 'core/notification' ], function($, a
     } ]);
     promises[0].done(function(response) {
 
+			var actions = $('.actions-row');
+			var updating = Math.max(1,actions.attr('data-updating') || 1);
+			updating--;
+			actions.attr('data-updating', updating);
+			if (updating <= 0) {
+
+				actions.find('button').show();
+				actions.find('.alert').hide();
+			}
+
      if (!response || (typeof response === 'object' && response.success !== true)) {
 
       str.get_strings([ {
         key : 'store_personality_answer_error_title',
-        component : 'block_task_oriented_groups'
+        component : 'block_tog'
       }, {
         key : 'store_personality_answer_error_text',
-        component : 'block_task_oriented_groups'
+        component : 'block_tog'
       }, {
         key : 'store_personality_answer_error_continue',
-        component : 'block_task_oriented_groups'
+        component : 'block_tog'
       } ]).done(function(s) {
        notification.alert(s[0], s[1], s[2]);
       }).fail(notification.exception);

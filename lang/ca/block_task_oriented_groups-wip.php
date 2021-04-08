@@ -24,19 +24,19 @@
  */
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Bloc per fer grups orientats a tasques';
-$string['task_oriented_groups'] = 'Grups orientats a tasques';
+$string['pluginname'] = 'Creació d\'agrupaments orientats a tasques';
+$string['task_oriented_groups'] = 'Agrupaments orientats a tasques';
 
-$string['settings:heading'] = 'Aquest bloc utilitza un servei extern per generar els grups per realitzar una tasca.';
+$string['settings:heading'] = 'Aquest bloc utilitza un servei extern per proposar-vos agrupaments d\'usuaris optimitzats per a una tasca determinada.';
 $string['settings:base_api_url_title'] = 'Base API URL';
-$string['settings:base_api_url_description'] = 'L\'URL del servidor que proporciona els serveis per generar grups per a una tasca.';
+$string['settings:base_api_url_description'] = 'L\'URL del servidor que proporciona el servei d\'agrupaments optimitzats.';
 
-$string['main:composite'] = 'Proposa grups idonis per a una determinada tasca';
+$string['main:composite'] = 'Proposa\'m grups idonis per a una tasca determinada';
 $string['main:fill_personality_test'] = 'Ompliu la vostra prova de personalitat';
 $string['main:my_personality'] = 'La meva personalitat';
 $string['main:my_intelligences'] = 'Les meves intel·ligències';
 $string['main:fill_intelligences_test'] = 'Completeu la vostra prova d\'intel·ligències';
-$string['main:auto_fill_in'] = 'Auto completa els tests';
+$string['main:auto_fill_in'] = 'Omple els tests de manera automàtica';
 $string['main:feedback_test'] = 'Proporcioneu comentaris sobre els grups creats';
 
 $string['personality_test_title'] = 'Prova de personalitat';
@@ -46,124 +46,124 @@ $string['personality_test_go_to_personality'] = 'Mostra la meva personalitat';
 $string['personality_question_0'] = 'Jo sóc';
 $string['personality_question_0_answer_0'] = 'Dona';
 $string['personality_question_0_answer_1'] = 'Home';
-$string['personality_question_0_answer_2'] = 'Prefereixo no contestar';
+$string['personality_question_0_answer_2'] = 'Prefereixo no respondre';
 
-$string['personality_question_1'] = 'Els jutges han de ser';
+$string['personality_question_1'] = 'Les persones que jutgen han de ser...';
 $string['personality_question_1_help'] = 'Exemple: Si un jutge jutja el teu germà, ha de seguir les lleis que valen per a tots per igual.';
-$string['personality_question_1_answer_0'] = 'Compassius';
+$string['personality_question_1_answer_0'] = 'Compassives';
 $string['personality_question_1_answer_1'] = 'Imparcials';
 $string['personality_question_1_answer_2'] = 'Depèn del cas';
 
-$string['personality_question_2'] = 'Prefereixes les coses';
-$string['personality_question_2_help'] = 'Exemple: M\'agrada planejar el meu dia a dia o prefereixo improvisar.';
+$string['personality_question_2'] = 'Prefereixes les coses...';
+$string['personality_question_2_help'] = 'Exemple: M\'agrada planejar el meu dia a dia, o prefereixo improvisar.';
 $string['personality_question_2_answer_0'] = 'Obertes';
 $string['personality_question_2_answer_1'] = 'Planificades';
-$string['personality_question_2_answer_2'] = 'Indiferent';
+$string['personality_question_2_answer_2'] = 'M\'és indiferent';
 
-$string['personality_question_3'] = 'Prefereixes';
-$string['personality_question_3_answer_0'] = 'El tradicional';
-$string['personality_question_3_answer_1'] = 'El nou';
-$string['personality_question_3_answer_2'] = 'Indiferent';
+$string['personality_question_3'] = 'Prefereixes...';
+$string['personality_question_3_answer_0'] = 'Allò tradicional';
+$string['personality_question_3_answer_1'] = 'Allò nou';
+$string['personality_question_3_answer_2'] = 'M\'és indiferent';
 
-$string['personality_question_4'] = 'Prefereixes';
-$string['personality_question_4_answer_0'] = 'Estar sol';
-$string['personality_question_4_answer_1'] = 'Estar acompanyat';
-$string['personality_question_4_answer_2'] = 'Indiferent';
+$string['personality_question_4'] = 'Prefereixes...';
+$string['personality_question_4_answer_0'] = 'Estar sol o sola';
+$string['personality_question_4_answer_1'] = 'Estar amb companyia';
+$string['personality_question_4_answer_2'] = 'M\'és indiferent';
 
-$string['personality_question_5'] = 'Ets més';
-$string['personality_question_5_help'] = 'Exemple: Creus en les coses que et diuen o prefereixes comprovar-ho.';
+$string['personality_question_5'] = 'Ets una persona més aviat...';
+$string['personality_question_5_help'] = 'Exemple: Creus en les coses que et diuen, o prefereixes comprovar-ho.';
 $string['personality_question_5_answer_0'] = 'Tolerant';
-$string['personality_question_5_answer_1'] = 'Escèptic';
+$string['personality_question_5_answer_1'] = 'Escèptica';
 $string['personality_question_5_answer_2'] = 'Indiferent';
 
-$string['personality_question_6'] = 'Treballes millor';
+$string['personality_question_6'] = 'Treballes millor...';
 $string['personality_question_6_answer_0'] = 'Sense pressió';
 $string['personality_question_6_answer_1'] = 'Amb pressió';
-$string['personality_question_6_answer_2'] = 'Indiferent';
+$string['personality_question_6_answer_2'] = 'M\'és indiferent';
 
-$string['personality_question_7'] = 'Ets més';
+$string['personality_question_7'] = 'Ets una persona més aviat...';
 $string['personality_question_7_help'] = 'Exemple: Quan faig els deures, m\'agrada organitzar-pas a pas sempre en el mateix ordre o prefereixo començar a l\'atzar.';
-$string['personality_question_7_answer_0'] = 'Metòdic';
-$string['personality_question_7_answer_1'] = 'Improvisador';
-$string['personality_question_7_answer_2'] = 'Indiferent';
+$string['personality_question_7_answer_0'] = 'Metòdica';
+$string['personality_question_7_answer_1'] = 'Improvisadora';
+$string['personality_question_7_answer_2'] = 'M\'és indiferent';
 
-$string['personality_question_8'] = 'Ets més';
+$string['personality_question_8'] = 'Ets una persona més aviat...';
 $string['personality_question_8_help'] = 'Exemple: M\'agraden més les matemàtiques (teòric) o educació física (pràctic).';
-$string['personality_question_8_answer_0'] = 'Teòric';
-$string['personality_question_8_answer_1'] = 'Pràctic';
+$string['personality_question_8_answer_0'] = 'Teòrica';
+$string['personality_question_8_answer_1'] = 'Pràctica';
 $string['personality_question_8_answer_2'] = 'Indiferent';
 
-$string['personality_question_9'] = 'Ets més';
-$string['personality_question_9_help'] = 'Exemple: M\'agrada explicar-li tot a que em passa als meus amics o prefereixo guardarmelo per a mi.';
-$string['personality_question_9_answer_0'] = 'Reservat';
+$string['personality_question_9'] = 'Ets una persona més aviat...';
+$string['personality_question_9_help'] = 'Exemple: M\'agrada explicar-li tot a que em passa als meus amics o prefereixo guardar-m\'ho per a mi.';
+$string['personality_question_9_answer_0'] = 'Reservada';
 $string['personality_question_9_answer_1'] = 'Sociable';
 $string['personality_question_9_answer_2'] = 'Indiferent';
 
-$string['personality_question_10'] = 'Et veus a tu mateix més';
-$string['personality_question_10_help'] = 'Exemple: Prefereixes construir un robot (Curiós) o comprar-lo ja fet (Acomodat).';
-$string['personality_question_10_answer_0'] = 'Acomodat';
-$string['personality_question_10_answer_1'] = 'Curiós';
+$string['personality_question_10'] = 'Ets una persona que es veu a sí mateixa més aviat...';
+$string['personality_question_10_help'] = 'Exemple: Prefereixes construir un robot (Curiosa) o comprar-lo ja fet (Acomodada).';
+$string['personality_question_10_answer_0'] = 'Acomodada';
+$string['personality_question_10_answer_1'] = 'Curiosa';
 $string['personality_question_10_answer_2'] = 'Indiferent';
 
-$string['personality_question_11'] = 'Ets més';
-$string['personality_question_11_answer_0'] = 'Contingut';
-$string['personality_question_11_answer_1'] = 'Expressiu';
+$string['personality_question_11'] = 'Ets una persona més aviat...';
+$string['personality_question_11_answer_0'] = 'Continguda';
+$string['personality_question_11_answer_1'] = 'Expressiva';
 $string['personality_question_11_answer_2'] = 'Indiferent';
 
-$string['personality_question_12'] = 'Ets més';
+$string['personality_question_12'] = 'Ets una persona més aviat...';
 $string['personality_question_12_help'] = 'Exemple: Dic les coses com són (honest) o prefereixo ometre les paraules que puguin ferir.';
-$string['personality_question_12_answer_0'] = 'Diplomàtic';
-$string['personality_question_12_answer_1'] = 'Honest';
+$string['personality_question_12_answer_0'] = 'Diplomàtica';
+$string['personality_question_12_answer_1'] = 'Honesta';
 $string['personality_question_12_answer_2'] = 'Indiferent';
 
 $string['personality_question_13'] = 'Prefereixes';
-$string['personality_question_13_help'] = 'Exemple: Prefereixes fer mapes (el concret) o resoldre problemes matemàtics (l\'abstracte).';
-$string['personality_question_13_answer_0'] = 'El concret';
-$string['personality_question_13_answer_1'] = 'L\'abstracte';
-$string['personality_question_13_answer_2'] = 'Indiferent';
+$string['personality_question_13_help'] = 'Exemple: Prefereixes fer mapes (concret) o resoldre problemes matemàtics (abstracte).';
+$string['personality_question_13_answer_0'] = 'Allò concret';
+$string['personality_question_13_answer_1'] = 'Allò abstracte';
+$string['personality_question_13_answer_2'] = 'M\'és indiferent';
 
-$string['personality_question_14'] = 'Ets més';
-$string['personality_question_14_answer_0'] = 'Silenciós';
+$string['personality_question_14'] = 'Ets una persona més aviat...';
+$string['personality_question_14_answer_0'] = 'Silenciosa';
 $string['personality_question_14_answer_1'] = 'Xerraire';
 $string['personality_question_14_answer_2'] = 'Indiferent';
 
-$string['personality_question_15'] = 'Aprens millor';
+$string['personality_question_15'] = 'Aprens millor...';
 $string['personality_question_15_answer_0'] = 'Llegint';
 $string['personality_question_15_answer_1'] = 'Escoltant';
-$string['personality_question_15_answer_2'] = 'Indiferent';
+$string['personality_question_15_answer_2'] = 'M\'és indiferent';
 
-$string['personality_question_16'] = 'Ets més';
+$string['personality_question_16'] = 'Ets una persona més aviat...';
 $string['personality_question_16_help'] = 'Exemple: T\'agrada pensar per què volen els avions (conceptual) o fer una maqueta d\'un avió (pràctic)';
-$string['personality_question_16_answer_0'] = 'Pràctic';
+$string['personality_question_16_answer_0'] = 'Pràctica';
 $string['personality_question_16_answer_1'] = 'Conceptual';
 $string['personality_question_16_answer_2'] = 'Indiferent';
 
-$string['personality_question_17'] = 'Prefereixes';
+$string['personality_question_17'] = 'Prefereixes actuar amb...';
 $string['personality_question_17_help'] = 'Exemple: Si el teu amic arriba 20 minuts tard, vols saber per què (empatia) o t\'enfades sense importar el motiu (lògica).';
 $string['personality_question_17_answer_0'] = 'Empatia';
 $string['personality_question_17_answer_1'] = 'Lògica';
-$string['personality_question_17_answer_2'] = 'Indiferent';
+$string['personality_question_17_answer_2'] = 'M\'és indiferent';
 
-$string['personality_question_18'] = 'Prefereixes';
+$string['personality_question_18'] = 'Prefereixes...';
 $string['personality_question_18_help'] = 'Exemple: Quan hi ha un robatori prefereixo investigar els fets o imaginar el que ha pogut passar.';
 $string['personality_question_18_answer_0'] = 'Investigar';
 $string['personality_question_18_answer_1'] = 'Especular';
-$string['personality_question_18_answer_2'] = 'Indiferent';
+$string['personality_question_18_answer_2'] = 'M\'és indiferent';
 
-$string['personality_question_19'] = 'Ets més';
+$string['personality_question_19'] = 'Ets una persona més aviat...';
 $string['personality_question_19_help'] = 'Exemple: Quan em preparo per anar a dormir, sempre segueixo el mateix ordre (rentar dents, posar pijama etc).';
-$string['personality_question_19_answer_0'] = 'Sistemàtic';
+$string['personality_question_19_answer_0'] = 'Sistemàtica';
 $string['personality_question_19_answer_1'] = 'Informal';
 $string['personality_question_19_answer_2'] = 'Indiferent';
 
-$string['personality_question_20'] = 'Prefereixes';
+$string['personality_question_20'] = 'Prefereixes...';
 $string['personality_question_20_help'] = 'Exemple: M\'agrada menjar coses diferents (varietat) o prefereixo menjar sempre pizza (rutina).';
-$string['personality_question_20_answer_0'] = 'Rutina';
-$string['personality_question_20_answer_1'] = 'Varietat';
-$string['personality_question_20_answer_2'] = 'Indiferent';
+$string['personality_question_20_answer_0'] = 'La rutina';
+$string['personality_question_20_answer_1'] = 'La varietat';
+$string['personality_question_20_answer_2'] = 'M\'és indiferent';
 
-$string['intelligences_test_title'] = 'Prova d\'intel·ligències';
-$string['intelligences_test_heading'] = 'Prova d\'intel·ligències';
+$string['intelligences_test_title'] = 'Prova d\'intel·ligències múltiples';
+$string['intelligences_test_heading'] = 'Prova d\'intel·ligències múltiples';
 $string['intelligences_test_go_to_intelligences'] = 'Mostra les meves intel·ligències';
 
 $string['intelligence_question_0'] = 'No m\'és difícil dir el que penso en una discussió o debat.';
@@ -174,21 +174,21 @@ $string['intelligence_question_answer_2'] = 'Ni d\'acord ni en desacord';
 $string['intelligence_question_answer_3'] = 'D\'acord';
 $string['intelligence_question_answer_4'] = 'Totalment d\'acord';
 
-$string['intelligence_question_1'] = 'Prefereixo fer un mapa a explicar a algú com ha d\'arribar';
+$string['intelligence_question_1'] = 'Prefereixo fer un mapa a haver d\'explicar a algú com s\'arriba a un lloc.';
 $string['intelligence_question_1_help'] = 'Exemple: Si em pregunten per un camí, prefereixo dibuixar-que explicar-ho amb les meves paraules.';
 
-$string['intelligence_question_2'] = 'Si estic enfadat(da) o content(a) generalment sé exactamanet perquè';
+$string['intelligence_question_2'] = 'Si estic enfadat, enfadada, content o contenta, generalment sé exactamnent per què.';
 
 $string['intelligence_question_3'] = 'Sé tocar (o abans sabia tocar) un instrument musical';
 $string['intelligence_question_3_help'] = 'Exemple: sé tocar la guitarra.';
 
-$string['intelligence_question_4'] = 'Associo música amb els meus estats d\'ànim';
-$string['intelligence_question_4_help'] = 'Exemple: quan escolto reggaeton em sento molt alegre i escolto hip-hop quan estic enfadat.';
+$string['intelligence_question_4'] = 'Associo estils musicals als meus estats d\'ànim';
+$string['intelligence_question_4_help'] = 'Exemple: quan escolto reggaeton em sento alegre, i escolto hip-hop quan estic de mal humor.';
 
 $string['intelligence_question_5'] = 'Puc sumar o multiplicar mentalment amb molta rapidesa';
 
-$string['intelligence_question_6'] = 'Puc ajudar un(a) amic(ga) a afrontar els seus sentiments perquè jo ho vaig poder fer abans amb sentiments semblants';
-$string['intelligence_question_6_help'] = 'Exemple: Puc recomanar a un amic què fer quan es troba trist perquè hi ha vegades que jo mateix m\'he sentit trist i he sabut com animar-me. Cada vegada que em sento trist, vaig a jugar amb els meus millors amics :)';
+$string['intelligence_question_6'] = 'Puc ajudar un amic o amiga a afrontar els seus sentiments perquè jo ho vaig poder fer abans amb sentiments semblants';
+$string['intelligence_question_6_help'] = 'Exemple: Puc recomanar a un amic o amiga què fer quan està trist o trista perquè jo també m\'hi he sentit i he sabut com animar-me. Cada vegada que em sento trist, vaig a jugar amb els meus millors amics :)';
 
 $string['intelligence_question_7'] = 'M\'agrada treballar amb calculadores i ordinadors';
 $string['intelligence_question_7_help'] = 'Exemple: M\'agradaria aprendre programar.';
@@ -196,37 +196,37 @@ $string['intelligence_question_7_help'] = 'Exemple: M\'agradaria aprendre progra
 $string['intelligence_question_8'] = 'Aprenc ràpidament a ballar un nou ritme';
 $string['intelligence_question_8_help'] = 'Exemple: Quan escolto una cançó nova que no conec, sóc capaç de seguir el ritme i ballar.';
 
-$string['intelligence_question_9'] = 'Gaudeixo amb una bona xerrada, discurs o sermó';
+$string['intelligence_question_9'] = 'Gaudeixo amb una bona xerrada o discurs';
 
-$string['intelligence_question_10'] = 'Sempre distingeixo el nord del sud, allà on estigui';
-$string['intelligence_question_10_help'] = 'Exemple: Ara mateix sé on està el nord.';
+$string['intelligence_question_10'] = 'Sempre distingeixo el nord del sud, allí on estigui';
+$string['intelligence_question_10_help'] = 'Exemple: Ara mateix sé on és el nord.';
 
 $string['intelligence_question_11'] = 'M\'agrada reunir grups de persones en una festa o esdeveniment especial';
 $string['intelligence_question_11_help'] = 'Exemple: M\'agrada organitzar la meva festa d\'aniversari.';
 
-$string['intelligence_question_12'] = 'Sóc sensible a les vistes, els sons i la sensació de coses que m\'envolten';
+$string['intelligence_question_12'] = 'Sóc sensible a les vistes, els sons i les sensacions que m\'envolten';
 
-$string['intelligence_question_13'] = 'La vida em sembla buida sense música';
+$string['intelligence_question_13'] = 'La vida em sembla buida sense música.';
 $string['intelligence_question_13_help'] = 'Exemple: Escolto música al tren.';
 
-$string['intelligence_question_14'] = 'Sempre entenc els gràfics que vénen en les instruccions d\'equips o instruments';
+$string['intelligence_question_14'] = 'Sempre entenc els gràfics que vénen a les instruccions d\'equips o instruments';
 $string['intelligence_question_14_help'] = 'Exemple: Sóc capaç de muntar un moble d\'Ikea.';
 
-$string['intelligence_question_15'] = 'M\'agrada resoldre trencaclosques i entretenir-me amb jocs electrònics';
+$string['intelligence_question_15'] = 'M\'agrada resoldre trencaclosques i entretenir-me amb jocs electrònics.';
 $string['intelligence_question_15_help'] = 'Exemple: M\'agrada jugar al Monopoly amb amics i família.';
 
-$string['intelligence_question_16'] = 'Em va ser fàcil aprendre a anar amb bicicleta (o amb patins)';
+$string['intelligence_question_16'] = 'Em va ser fàcil aprendre a anar amb bicicleta (o amb patins).';
 
-$string['intelligence_question_17'] = 'Em poso nerviós(osa) quan escolto una discussió o afirmació que em sembla il·lògica';
-$string['intelligence_question_17_help'] = 'Exemple: Em poso nerviós quan els meus pares no em deixa aixecar de la taula sense haver menjat tot encara que no tingui gana.';
+$string['intelligence_question_17'] = 'Em poso nerviós o nerviosa quan escolto una discussió o afirmació que em sembla il·lògica.';
+$string['intelligence_question_17_help'] = 'Exemple: Em poso nerviosa si els meus pares no em deixen aixecar de la taula sense haver-m\'ho menjat tot encara que no tingui gana.';
 
-$string['intelligence_question_18'] = 'Soc capaç de convèncer d\'altres a seguir els meus plans';
-$string['intelligence_question_18_help'] = 'Exemple: quan estic amb amics, sóc capaç de convèncer per fer junts el que a mi més m\'agrada.';
+$string['intelligence_question_18'] = 'Soc capaç de convèncer altres persones a seguir els meus plans';
+$string['intelligence_question_18_help'] = 'Exemple: quan estic amb la colla, sóc capaç de convèncer per fer junts el que a mi més m\'agrada.';
 
-$string['intelligence_question_19'] = 'Tinc bon sentit d\'equilibri i coordinació';
-$string['intelligence_question_19_help'] = 'Exemple: Es em donen bé esports com el patinatge, la natació, l\'esquí.';
+$string['intelligence_question_19'] = 'Tinc bon sentit de l\'equilibri i coordinació';
+$string['intelligence_question_19_help'] = 'Exemple: Se\'m donen bé els esports com ara el patinatge, la natació o l\'esquí.';
 
-$string['intelligence_question_20'] = 'Sovint veig configuracions i relacions entre nombres amb més rapidesa i facilitat que altres';
+$string['intelligence_question_20'] = 'Sovint veig configuracions i relacions entre nombres amb més rapidesa i facilitat que altres persones';
 $string['intelligence_question_20_help'] = 'Exemple: De seguida veig el següent número d\'una sèrie com 3, 6, 9, ...';
 
 $string['intelligence_question_21'] = 'M\'agrada construir models (o escultures)';
@@ -236,61 +236,61 @@ $string['intelligence_question_22'] = 'Tinc facilitat per trobar el significat d
 $string['intelligence_question_22_help'] = 'Exemple: Quan veig una paraula nova, sóc capaç d\'endevinar el seu significat.';
 
 $string['intelligence_question_23'] = 'Puc distingir un objecte des de diferents punts de vista';
-$string['intelligence_question_23_help'] = 'Exemple: Encara que estigui treballant amb el monitor davant, sóc capaç d\'imaginar-me la part posterior.';
+$string['intelligence_question_23_help'] = 'Exemple: Encara que estigui treballant amb el monitor al davant, sóc capaç d\'imaginar-me la part posterior.';
 
-$string['intelligence_question_24'] = 'Em refereixo als animals i tinc la responsabilitat de cuidar-los';
+$string['intelligence_question_24'] = 'M\'agraden als animals i em responsabilitzo de cuidar-los.';
 
-$string['intelligence_question_25'] = 'Sovint faig la connexió entre una peça de música i algun esdeveniment de la meva vida';
-$string['intelligence_question_25_help'] = 'Exemple: Quan sento "A poc a poc" de Luís Fonsi recordo la festa d\'aniversari de la meva millor amiga';
+$string['intelligence_question_25'] = 'Sovint faig la connexió entre una peça de música i algun esdeveniment de la meva vida.';
+$string['intelligence_question_25_help'] = 'Exemple: Quan sento "Despacito" de Luis Fonsi recordo la festa d\'aniversari de la meva millor amiga';
 
-$string['intelligence_question_26'] = 'M\'agrada treballar amb nombres i figures';
+$string['intelligence_question_26'] = 'M\'agrada treballar amb nombres i figures.';
 $string['intelligence_question_26_help'] = 'Exemple: M\'agrada fer operacions matemàtiques.';
 
 $string['intelligence_question_27'] = 'M\'agrada seure silenciosament i reflexionar sobre els meus sentiments íntims';
-$string['intelligence_question_27_help'] = 'Exemple: M\'agrada reflexionar sobre les activitats que m\'agraden com patinar.';
+$string['intelligence_question_27_help'] = 'Exemple: M\'agrada reflexionar sobre les activitats que m\'agraden, com ara patinar.';
 
-$string['intelligence_question_28'] = 'Amb només mirar la forma de construccions i estructures em sento a gust';
+$string['intelligence_question_28'] = 'Em sento a gust mirant la forma de construccions i estructures.';
 $string['intelligence_question_28_help'] = 'Exemple: M\'agrada observar la Torre Eiffel.';
 
-$string['intelligence_question_29'] = 'M\'agrada taral·lejar, xiular i cantar a la dutxa o quan estic sol(a)';
+$string['intelligence_question_29'] = 'M\'agrada taral·lejar, xiular i cantar a la dutxa o quan estic sol o sola.';
 
 $string['intelligence_question_30'] = 'La informació sobre estudis fets i estudis socials em dóna un temps de gaudi de qualitat';
 
-$string['intelligence_question_31'] = 'Sóc bo(na) per l\'atletisme';
+$string['intelligence_question_31'] = 'Sóc bo o bona per a l\'atletisme';
 
-$string['intelligence_question_32'] = 'M\'agrada escriure cartes detallades als meus amics';
+$string['intelligence_question_32'] = 'M\'agrada escriure missatges detallats a les meves amistats.';
 $string['intelligence_question_32_help'] = 'Exemple: Quan envio un WhatsApp, m\'agrada explicar molts detalls.';
 
-$string['intelligence_question_33'] = 'Generalment m\'adono de l\'expressió que tinc a la cara';
-$string['intelligence_question_33_help'] = 'Exemple: Quan sento vergonya sé que em poso molt vermell, quan estic alegre meus ulls estan oberts com plats i quan em sento trist sé que els meus parpelles baixen.';
+$string['intelligence_question_33'] = 'Generalment m\'adono de l\'expressió que tinc a la cara.';
+$string['intelligence_question_33_help'] = 'Exemple: Quan sento vergonya sé que em poso molt vermell/a, quan estic alegre meus ulls estan oberts com plats i quan sento tristor sé que les meves parpelles baixen.';
 
-$string['intelligence_question_34'] = 'M\'adono de les expressions a la cara d\'altres persones';
+$string['intelligence_question_34'] = 'M\'adono de les expressions a la cara d\'altres persones.';
 $string['intelligence_question_34_help'] = 'Exemple: M\'adono si algú està enfadat o trist per l\'expressió de la seva cara.';
 
-$string['intelligence_question_35'] = 'La cura del medi ambient és una prioritat elevada';
+$string['intelligence_question_35'] = 'La cura del medi ambient és una prioritat elevada.';
 
-$string['intelligence_question_36'] = 'Em mantinc "en contacte" amb els meus estats d\'ànim. No em costa identificar-los';
+$string['intelligence_question_36'] = 'Em mantinc "en contacte" amb els meus estats d\'ànim. No em costa identificar-los.';
 $string['intelligence_question_36_help'] = 'Exemple: M\'adono si estic enfadat, alegre o trist.';
 
-$string['intelligence_question_37'] = 'M\'adono dels estats d\'ànim d\'altres';
+$string['intelligence_question_37'] = 'M\'adono dels estats d\'ànim dels altres.';
 $string['intelligence_question_37_help'] = 'Exemple: M\'adono quan la meva mare està enfadada.';
 
-$string['intelligence_question_38'] = 'M\'adono força bé del que altres pensen de mi';
+$string['intelligence_question_38'] = 'M\'adono força bé del que els altres pensen de mi.';
 
-$string['intelligence_question_39'] = 'Em sento a casa a l\'aire lliure i en un entorn natural';
+$string['intelligence_question_39'] = 'Em sento a casa a l\'aire lliure i en un entorn natural.';
 
 $string['store_personality_answer_error_title'] = 'Error';
-$string['store_personality_answer_error_text'] = 'No puc emmagatzemar la teva resposta personal.';
+$string['store_personality_answer_error_text'] = 'No s\'ha pogut emmagatzemar la teva resposta personal.';
 $string['store_personality_answer_error_continue'] = 'D\'acord';
 
 $string['store_intelligences_answer_error_title'] = 'Error';
-$string['store_intelligences_answer_error_text'] = 'No puc emmagatzemar la resposta de les intel·ligències.';
+$string['store_intelligences_answer_error_text'] = 'No s\'ha pogut emmagatzemar la teva resposta a la prova d\'intel·ligències.';
 $string['store_intelligences_answer_error_continue'] = 'D\'acord';
 
 $string['privacy:metadata:btog_personality_answers'] = 'Informació sobre les respostes de l\'usuari a les preguntes de la prova de personalitat.';
-$string['privacy:metadata:btog_personality_answers:userid'] = 'La identificació de l\'usuari que respon a la pregunta.';
-$string['privacy:metadata:btog_personality_answers:question'] = 'L\'identificador de la pregunta.';
-$string['privacy:metadata:btog_personality_answers:answer'] = 'L\'identificador de la resposta a la pregunta.';
+$string['privacy:metadata:btog_personality_answers:userid'] = 'Identificador de l\'usuari que respon a la pregunta.';
+$string['privacy:metadata:btog_personality_answers:question'] = 'Identificador de la pregunta.';
+$string['privacy:metadata:btog_personality_answers:answer'] = 'Identificador de la resposta a la pregunta.';
 $string['privacy:export:btog_personality_answers'] = 'Prova de personalitat';
 
 $string['privacy:metadata:btog_intelligences_answers'] = 'Informació sobre les respostes de l\'usuari a les preguntes de prova d\'intel·ligències.';

@@ -13,7 +13,7 @@
 /**
  * Javascript components used on the view/auto_fill_in.php.
  *
- * @package block_task_oriented_groups
+ * @package block_tog
  * @copyright 2018 UDT-IA, IIIA-CSIC
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -44,7 +44,7 @@ define([ 'jquery', 'core/ajax', 'core/notification' ], function($, ajax,notifica
 		event.stopPropagation();
 		var cellElement = $(event.target).parent().parent();
 		var promises = ajax.call([ {
-		  methodname : 'block_task_oriented_groups_auto_fill_in_personality',
+		  methodname : 'block_tog_auto_fill_in_personality',
 		  args : {
 		    userid : cellElement.attr("data-user-id")
 		  }
@@ -77,7 +77,7 @@ define([ 'jquery', 'core/ajax', 'core/notification' ], function($, ajax,notifica
 		event.stopPropagation();
 		var cellElement = $(event.target).parent().parent();
 		var promises = ajax.call([ {
-		  methodname : 'block_task_oriented_groups_auto_fill_in_intelligences',
+		  methodname : 'block_tog_auto_fill_in_intelligences',
 		  args : {
 		    userid : cellElement.attr("data-user-id")
 		  }

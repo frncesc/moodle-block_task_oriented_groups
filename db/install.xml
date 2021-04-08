@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMLDB xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" PATH="blocks/task_oriented_groups/db" VERSION="20181119" COMMENT="XMLDB file for Moodle blocks/task_oriented_groups" xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
+<XMLDB xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" PATH="blocks/tog/db" VERSION="20181119" COMMENT="XMLDB file for Moodle blocks/tog" xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
    <TABLES>
-      <TABLE NAME="btog_personality_answers" COMMENT="Contains the answers to the personality test.">
+      <TABLE NAME="block_tog_perso_answers" COMMENT="Contains the answers to the personality test.">
          <FIELDS>
             <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="userid" />
             <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="id" NEXT="question" />
@@ -12,7 +12,7 @@
             <KEY NAME="primary" TYPE="primary" FIELDS="id" />
          </KEYS>
       </TABLE>
-      <TABLE NAME="btog_intelligences_answers" COMMENT="Contains the answers to the intelligences test.">
+      <TABLE NAME="block_tog_intel_answers" COMMENT="Contains the answers to the intelligences test.">
          <FIELDS>
             <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="userid" />
             <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="id" NEXT="question" />
@@ -23,7 +23,7 @@
             <KEY NAME="primary" TYPE="primary" FIELDS="id" />
          </KEYS>
       </TABLE>
-      <TABLE NAME="btog_personality" COMMENT="Stores the personality of an user.">
+      <TABLE NAME="block_tog_personality" COMMENT="Stores the personality of an user.">
          <FIELDS>
             <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="userid" />
             <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="id"  NEXT="type" />
@@ -38,7 +38,7 @@
             <KEY NAME="primary" TYPE="primary" FIELDS="id" />
          </KEYS>
       </TABLE>
-      <TABLE NAME="btog_intelligences" COMMENT="Stores the intelligences of an user.">
+      <TABLE NAME="block_tog_intelligences" COMMENT="Stores the intelligences of an user.">
          <FIELDS>
             <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="userid" />
             <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="id"  NEXT="verbal" />
@@ -55,7 +55,7 @@
             <KEY NAME="primary" TYPE="primary" FIELDS="id" />
          </KEYS>
       </TABLE>
-      <TABLE NAME="btog_composed" COMMENT="Contains information of the composed groups.">
+      <TABLE NAME="block_tog_composed" COMMENT="Contains information of the composed groups.">
          <FIELDS>
             <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="userid" />
             <FIELD NAME="groupingid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="id"  NEXT="groupid" />

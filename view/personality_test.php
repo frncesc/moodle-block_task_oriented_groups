@@ -14,16 +14,31 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle. If not, see <http://www.gnu.org/licenses/>.
 require_once ('../../../config.php');
-use block_task_oriented_groups\PersonalityQuestionnaire;
-use block_task_oriented_groups\Personality;
+use block_tog\PersonalityQuestionnaire;
+use block_tog\Personality;
+use block_tog\Intelligences;
 
 $PAGE->set_pagelayout('standard');
 $PAGE->set_context(context_system::instance());
-$PAGE->set_title(get_string('personality_test_title', 'block_task_oriented_groups'));
-$PAGE->set_heading(get_string('personality_test_heading', 'block_task_oriented_groups'));
-$PAGE->set_url($CFG->wwwroot . '/blocks/task_oriented_groups/view/personality_test.php');
+$courseid = optional_param('courseid', null, PARAM_INT);
+$PAGE->set_title(get_string('personality_test_title', 'block_tog'));
+$PAGE->set_heading(get_string('personality_test_heading', 'block_tog'));
+$PAGE->set_url($CFG->wwwroot . '/blocks/tog/view/personality_test.php');
+$PAGE->add_body_class('block_task_oriented_group');
 
-require_login();
+$courseid = optional_param('courseid', 0, PARAM_INT);
+if ($courseid) {
+
+    $course = $DB->get_record('course', array('id' => $courseid
+    ), '*', MUST_EXIST);
+    require_login($course);
+    context_helper::preload_course($course->id);
+    $context = context_course::instance($course->id, MUST_EXIST);
+    $PAGE->set_context($context);
+} else {
+
+    require_login();
+}
 $answers = PersonalityQuestionnaire::getAnswersOfCurrentUser();
 echo $OUTPUT->header();
 ?>
@@ -45,7 +60,7 @@ for ($i = 0; $i < PersonalityQuestionnaire::countQuestions(); $i++) {
     if (PersonalityQuestionnaire::hasQuestionHelp($i)) {
         echo '&nbsp;&nbsp;';
         echo $OUTPUT->help_icon(PersonalityQuestionnaire::getQuestionHelpIdentifier($i),
-                'block_task_oriented_groups', '');
+                'block_tog', '');
     }
     ?></h4>
 			</div>
@@ -68,7 +83,7 @@ for ($i = 0; $i < PersonalityQuestionnaire::countQuestions(); $i++) {
 						type="radio"
 						id="answer_<?=$j?>_for_personality_question_<?=$i?>"
 						name="<?=$questionId?>"
-						value="<?=PersonalityQuestionnaire::getAnswerQuestionValueOf($i,$j)?>"
+						value="<?=PersonalityQuestionnaire::getAnswerQuestionValueOf($i, $j)?>"
 						<?php
 
         if ($selected == $j) {
@@ -78,7 +93,7 @@ for ($i = 0; $i < PersonalityQuestionnaire::countQuestions(); $i++) {
 					><label
 						class="form-check-label"
 						for="answer_<?=$j?>_for_personality_question_<?=$i?>"
-					><?=PersonalityQuestionnaire::getAnswerQuestionTextOf($i,$j)?></label>
+					><?=PersonalityQuestionnaire::getAnswerQuestionTextOf($i, $j)?></label>
 				</div>
   <?php
     }
@@ -88,22 +103,62 @@ for ($i = 0; $i < PersonalityQuestionnaire::countQuestions(); $i++) {
 	</div>
   <?php
 }
-if (Personality::getPersonalityOfCurrentUser()) {
-
-    $linkstr = get_string('personality_test_go_to_personality', 'block_task_oriented_groups');
-    $linkaddr = $CFG->wwwroot . '/blocks/task_oriented_groups/view/personality.php';
-    ?>
-    	<div class="row justify-content-md-center">
-		<a
-			class="btn btn-primary"
-			href="<?=$linkaddr?>"
+$personality_url = $CFG->wwwroot . '/blocks/tog/view/personality.php';
+if ($courseid) {
+    $personality_url .= '?courseid=' . $courseid;
+}
+?>
+   	<div class="row justify-content-md-center actions-row">
+		<div
+			class="alert alert-warning blink"
+			role="alert"
+			style="display: none;"
+		>
+   			<?=get_string('personality_test_storing_msg', 'block_tog')?>
+   		</div>
+   		<?php
+    $intelligences = Intelligences::getIntelligencesOfCurrentUser();
+    if (!$intelligences) {
+        $intelligences_test_url = $CFG->wwwroot .
+                '/blocks/tog/view/intelligences_test.php';
+        if ($courseid) {
+            $intelligences_test_url .= '?courseid=' . $courseid;
+        }
+        ?>
+		<button
+			type="button"
+			class="btn btn-secondary"
+			onclick="location.href='<?=$intelligences_test_url?>';"
 			role="button"
-		><?=$linkstr?></a>
-	</div>
-    <?php
+		>
+			<?=get_string('personality_test_go_to_intelligences_test', 'block_tog')?>
+		</button>
+        <?php
+    }
+    ?>
+		<button
+			type="button"
+			class="btn btn-primary"
+			onclick="location.href='<?=$personality_url?>';"
+			role="button"
+		>
+			<?=get_string('personality_test_go_to_personality', 'block_tog')?>
+		</button>
+		<?php
+if ($courseid) {
+    ?>
+		<button
+			type="button"
+			class="btn btn-secondary"
+			onclick="location.href='<?=$CFG->wwwroot . '/course/view.php?id=' . $courseid?>';"
+			role="button"
+		>
+        	<?=get_string('personality_test_go_to_course', 'block_tog')?>
+        </button>
+        <?php
 }
 ?>
 </div>
 <?php
-$PAGE->requires->js_call_amd('block_task_oriented_groups/personality_test', 'initialise');
+$PAGE->requires->js_call_amd('block_tog/personality_test', 'initialise');
 echo $OUTPUT->footer();

@@ -13,7 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle. If not, see <http://www.gnu.org/licenses/>.
-namespace block_task_oriented_groups\privacy;
+namespace block_tog\privacy;
 
 use core_privacy\local\metadata\collection;
 use core_privacy\local\request\approved_contextlist;
@@ -22,17 +22,17 @@ use core_privacy\local\request\contextlist;
 use core_privacy\local\request\transform;
 use core_privacy\local\request\userlist;
 use core_privacy\local\request\writer;
-use block_task_oriented_groups\PersonalityQuestionnaire;
-use block_task_oriented_groups\IntelligencesQuestionnaire;
-use block_task_oriented_groups\Personality;
-use block_task_oriented_groups\Intelligences;
+use block_tog\PersonalityQuestionnaire;
+use block_tog\IntelligencesQuestionnaire;
+use block_tog\Personality;
+use block_tog\Intelligences;
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
  * Privacity details.
  *
- * @package block_task_oriented_groups
+ * @package block_tog
  * @category blocks
  * @copyright UDT-IA, IIIA-CSIC
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -48,36 +48,36 @@ class provider implements \core_privacy\local\metadata\provider,
      * @return collection A listing of user data stored through this system.
      */
     public static function get_metadata(collection $collection): collection {
-        $collection->add_database_table('btog_personality_answers',
-                ['userid' => 'privacy:metadata:btog_personality_answers:userid',
-                    'question' => 'privacy:metadata:btog_personality_answers:discussionid',
-                    'answer' => 'privacy:metadata:btog_personality_answers:preference'
-                ], 'privacy:metadata:btog_personality_answers');
-        $collection->add_database_table('btog_intelligences_answers',
-                ['userid' => 'privacy:metadata:btog_intelligences_answers:userid',
-                    'question' => 'privacy:metadata:btog_intelligences_answers:discussionid',
-                    'answer' => 'privacy:metadata:btog_intelligences_answers:preference'
-                ], 'privacy:metadata:btog_intelligences_answers');
-        $collection->add_database_table('btog_personality',
-                ['userid' => 'privacy:metadata:btog_personality:userid',
-                    'type' => 'privacy:metadata:btog_personality:type',
-                    'gender' => 'privacy:metadata:btog_personality:gender',
-                    'judgment' => 'privacy:metadata:btog_personality:judgment',
-                    'attitude' => 'privacy:metadata:btog_personality:attitude',
-                    'perception' => 'privacy:metadata:btog_personality:perception',
-                    'extrovert' => 'privacy:metadata:btog_personality:extrovert'
-                ], 'privacy:metadata:btog_intelligences_answers');
-        $collection->add_database_table('btog_intelligences',
-                ['userid' => 'privacy:metadata:btog_intelligences:userid',
-                    'verbal' => 'privacy:metadata:btog_intelligences:verbal',
-                    'logic_mathematics' => 'privacy:metadata:btog_intelligences:logic_mathematics',
-                    'visual_spatial' => 'privacy:metadata:btog_intelligences:visual_spatial',
-                    'kinestesica_corporal' => 'privacy:metadata:btog_intelligences:kinestesica_corporal',
-                    'musical_rhythmic' => 'privacy:metadata:btog_intelligences:musical_rhythmic',
-                    'intrapersonal' => 'privacy:metadata:btog_intelligences:intrapersonal',
-                    'interpersonal' => 'privacy:metadata:btog_intelligences:interpersonal',
-                    'naturalist_environmental' => 'privacy:metadata:btog_intelligences:naturalist_environmental'
-                ], 'privacy:metadata:btog_intelligences_answers');
+        $collection->add_database_table('block_tog_perso_answers',
+                ['userid' => 'privacy:metadata:block_tog_perso_answers:userid',
+                    'question' => 'privacy:metadata:block_tog_perso_answers:discussionid',
+                    'answer' => 'privacy:metadata:block_tog_perso_answers:preference'
+                ], 'privacy:metadata:block_tog_perso_answers');
+        $collection->add_database_table('block_tog_intel_answers',
+                ['userid' => 'privacy:metadata:block_tog_intel_answers:userid',
+                    'question' => 'privacy:metadata:block_tog_intel_answers:discussionid',
+                    'answer' => 'privacy:metadata:block_tog_intel_answers:preference'
+                ], 'privacy:metadata:block_tog_intel_answers');
+        $collection->add_database_table('block_tog_personality',
+                ['userid' => 'privacy:metadata:block_tog_personality:userid',
+                    'type' => 'privacy:metadata:block_tog_personality:type',
+                    'gender' => 'privacy:metadata:block_tog_personality:gender',
+                    'judgment' => 'privacy:metadata:block_tog_personality:judgment',
+                    'attitude' => 'privacy:metadata:block_tog_personality:attitude',
+                    'perception' => 'privacy:metadata:block_tog_personality:perception',
+                    'extrovert' => 'privacy:metadata:block_tog_personality:extrovert'
+                ], 'privacy:metadata:block_tog_intel_answers');
+        $collection->add_database_table('block_tog_intelligences',
+                ['userid' => 'privacy:metadata:block_tog_intelligences:userid',
+                    'verbal' => 'privacy:metadata:block_tog_intelligences:verbal',
+                    'logic_mathematics' => 'privacy:metadata:block_tog_intelligences:logic_mathematics',
+                    'visual_spatial' => 'privacy:metadata:block_tog_intelligences:visual_spatial',
+                    'kinestesica_corporal' => 'privacy:metadata:block_tog_intelligences:kinestesica_corporal',
+                    'musical_rhythmic' => 'privacy:metadata:block_tog_intelligences:musical_rhythmic',
+                    'intrapersonal' => 'privacy:metadata:block_tog_intelligences:intrapersonal',
+                    'interpersonal' => 'privacy:metadata:block_tog_intelligences:interpersonal',
+                    'naturalist_environmental' => 'privacy:metadata:block_tog_intelligences:naturalist_environmental'
+                ], 'privacy:metadata:block_tog_intel_answers');
 
         return $collection;
     }
@@ -180,15 +180,15 @@ class provider implements \core_privacy\local\metadata\provider,
         global $DB;
 
         $hasdata = false;
-        $hasdata = $hasdata || $DB->record_exists('btog_personality_answers',
+        $hasdata = $hasdata || $DB->record_exists('block_tog_perso_answers',
                 ['userid' => $userid
                 ]);
-        $hasdata = $hasdata || $DB->record_exists('btog_intelligences_answers',
+        $hasdata = $hasdata || $DB->record_exists('block_tog_intel_answers',
                 ['userid' => $userid
                 ]);
-        $hasdata = $hasdata || $DB->record_exists('btog_personality', ['userid' => $userid
+        $hasdata = $hasdata || $DB->record_exists('block_tog_personality', ['userid' => $userid
         ]);
-        $hasdata = $hasdata || $DB->record_exists('btog_intelligences', ['userid' => $userid
+        $hasdata = $hasdata || $DB->record_exists('block_tog_intelligences', ['userid' => $userid
         ]);
         return $hasdata;
     }
@@ -200,13 +200,13 @@ class provider implements \core_privacy\local\metadata\provider,
      */
     protected static function delete_user_data(int $userid) {
         global $DB;
-        $DB->delete_records('btog_personality_answers', ['userid' => $userid
+        $DB->delete_records('block_tog_perso_answers', ['userid' => $userid
         ]);
-        $DB->delete_records('btog_intelligences_answers', ['userid' => $userid
+        $DB->delete_records('block_tog_intel_answers', ['userid' => $userid
         ]);
-        $DB->delete_records('btog_personality', ['userid' => $userid
+        $DB->delete_records('block_tog_personality', ['userid' => $userid
         ]);
-        $DB->delete_records('btog_intelligences', ['userid' => $userid
+        $DB->delete_records('block_tog_intelligences', ['userid' => $userid
         ]);
     }
 
@@ -242,7 +242,7 @@ class provider implements \core_privacy\local\metadata\provider,
         global $DB;
         $context = \context_user::instance($userid);
         $answersdata = [];
-        $answers = $DB->get_recordset_select('btog_personality_answers', 'userid = ?', [$userid
+        $answers = $DB->get_recordset_select('block_tog_perso_answers', 'userid = ?', [$userid
         ], 'question ASC');
         foreach ($answers as $personalityanswer) {
             $data = (object) [
@@ -256,8 +256,8 @@ class provider implements \core_privacy\local\metadata\provider,
         $answers->close();
         writer::with_context($context)->export_data(
                 [
-                    get_string('privacy:export:btog_personality_answers',
-                            'block_task_oriented_groups')
+                    get_string('privacy:export:block_tog_perso_answers',
+                            'block_tog')
                 ], (object) $answersdata);
     }
 
@@ -270,7 +270,7 @@ class provider implements \core_privacy\local\metadata\provider,
         global $DB;
         $context = \context_user::instance($userid);
         $answersdata = [];
-        $answers = $DB->get_recordset_select('btog_intelligences_answers', 'userid = ?', [$userid
+        $answers = $DB->get_recordset_select('block_tog_intel_answers', 'userid = ?', [$userid
         ], 'question ASC');
         foreach ($answers as $intelligencesanswer) {
             $data = (object) [
@@ -284,8 +284,8 @@ class provider implements \core_privacy\local\metadata\provider,
         $answers->close();
         writer::with_context($context)->export_data(
                 [
-                    get_string('privacy:export:btog_intelligences_answers',
-                            'block_task_oriented_groups')
+                    get_string('privacy:export:block_tog_intel_answers',
+                            'block_tog')
                 ], (object) $answersdata);
     }
 
@@ -309,7 +309,7 @@ class provider implements \core_privacy\local\metadata\provider,
             ];
         }
         writer::with_context($context)->export_data(
-                [get_string('privacy:export:btog_personality', 'block_task_oriented_groups')
+                [get_string('privacy:export:block_tog_personality', 'block_tog')
                 ], (object) $personalitydata);
     }
 
@@ -336,7 +336,7 @@ class provider implements \core_privacy\local\metadata\provider,
             ];
         }
         writer::with_context($context)->export_data(
-                [get_string('privacy:export:btog_intelligences', 'block_task_oriented_groups')
+                [get_string('privacy:export:block_tog_intelligences', 'block_tog')
                 ], (object) $intelligencesdata);
     }
 }

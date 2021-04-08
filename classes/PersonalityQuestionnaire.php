@@ -13,14 +13,14 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle. If not, see <http://www.gnu.org/licenses/>.
-namespace block_task_oriented_groups;
+namespace block_tog;
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
  * Class that represents the personality questionnaire.
  *
- * @package block_task_oriented_groups
+ * @package block_tog
  * @copyright 2018 UDT-IA, IIIA-CSIC
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -92,7 +92,7 @@ class PersonalityQuestionnaire {
      * Return the text associated to the question.
      */
     public static function getQuestionTextOf($index) {
-        return get_string('personality_question_' . $index, 'block_task_oriented_groups');
+        return get_string('personality_question_' . $index, 'block_tog');
     }
 
     /**
@@ -124,7 +124,7 @@ class PersonalityQuestionnaire {
      */
     public static function getAnswerQuestionTextOf($question, $index) {
         return get_string('personality_question_' . $question . '_answer_' . $index,
-                'block_task_oriented_groups');
+                'block_tog');
     }
 
     /**
@@ -154,7 +154,7 @@ class PersonalityQuestionnaire {
      */
     public static function getAnswersOf($userid) {
         global $DB;
-        return $DB->get_records('btog_personality_answers', array('userid' => $userid
+        return $DB->get_records('block_tog_perso_answers', array('userid' => $userid
         ), 'question', 'question,answer');
     }
 
@@ -169,21 +169,21 @@ class PersonalityQuestionnaire {
     public static function setPersonalityAnswerFor($question, $answer, $userid) {
         global $DB;
         $updated = false;
-        $previousAnswer = $DB->get_record('btog_personality_answers',
+        $previousAnswer = $DB->get_record('block_tog_perso_answers',
                 array('userid' => $userid, 'question' => $question
                 ), '*', IGNORE_MISSING);
 
         if ($previousAnswer !== false && isset($previousAnswer)) {
 
             $previousAnswer->answer = $answer;
-            $updated = $DB->update_record('btog_personality_answers', $previousAnswer);
+            $updated = $DB->update_record('block_tog_perso_answers', $previousAnswer);
         } else {
 
             $record = new \stdClass();
             $record->userid = $userid;
             $record->question = $question;
             $record->answer = $answer;
-            $updated = $DB->insert_record('btog_personality_answers', $record, false) === true;
+            $updated = $DB->insert_record('block_tog_perso_answers', $record, false) === true;
         }
 
         return $updated;

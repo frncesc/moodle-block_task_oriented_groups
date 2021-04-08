@@ -13,7 +13,7 @@
 /**
  * Javascript components used to manage the composite view.
  *
- * @package block_task_oriented_groups
+ * @package block_tog
  * @copyright 2018 UDT-IA, IIIA-CSIC
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -108,10 +108,10 @@ define([ 'jquery', 'core/str', 'core_user/participants', 'core/ajax', 'core/conf
 		$('#composite__at_most_selection').hide();
 		var stringkeys = [ {
 		  key : 'composite_members_per_group_how_many_pattern',
-		  component : 'block_task_oriented_groups'
+		  component : 'block_tog'
 		}, {
 		  key : 'composite_members_per_group_how_many_pattern_2',
-		  component : 'block_task_oriented_groups'
+		  component : 'block_tog'
 		} ];
 		Str.get_strings(stringkeys).then(function(patterns) {
 
@@ -397,7 +397,7 @@ define([ 'jquery', 'core/str', 'core_user/participants', 'core/ajax', 'core/conf
 		  level : $('#composite__requirements_level_' + level).text().trim().toLowerCase(),
 		  importance : $('#composite__requirements_importance_' + importance).text().trim().toLowerCase()
 		};
-		Str.get_string('composite_requirements_pattern', 'block_task_oriented_groups', values).then(function(pattern) {
+		Str.get_string('composite_requirements_pattern', 'block_tog', values).then(function(pattern) {
 			requirementElement.append('<span>' + pattern + '</span>');
 			requirementElement.append('&nbsp;&nbsp;');
 			var removeAction = $('<i class="fa fa-trash"></i>');
@@ -427,7 +427,7 @@ define([ 'jquery', 'core/str', 'core_user/participants', 'core/ajax', 'core/conf
 			notification.exception(error);
 		};
 		var promises = ajax.call([ {
-		  methodname : 'block_task_oriented_groups_composite_groups',
+		  methodname : 'block_tog_composite_groups',
 		  args : {
 		  	courseid:$('#composite__courseid').val(),
 		    membersPerGroups : Number($('#composite__members_per_group').val()),
@@ -445,13 +445,13 @@ define([ 'jquery', 'core/str', 'core_user/participants', 'core/ajax', 'core/conf
 
 				Str.get_strings([ {
 				  key : 'composite_groups_error_title',
-				  component : 'block_task_oriented_groups'
+				  component : 'block_tog'
 				}, {
 				  key : 'composite_groups_error_text',
-				  component : 'block_task_oriented_groups'
+				  component : 'block_tog'
 				}, {
 				  key : 'composite_groups_error_continue',
-				  component : 'block_task_oriented_groups'
+				  component : 'block_tog'
 				} ]).done(function(s) {
 					$('#composite__submit').show();
 					$('#composite__progress').hide();

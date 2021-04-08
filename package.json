@@ -1,6 +1,6 @@
 {
-  "name": "moodle-block_task_oriented_groups",
-  "version": "0.1.1",
+  "name": "moodle-block_tog",
+  "version": "1.0.1",
   "description": "Grunt tasks for Moodle block for task oriented groups.",
   "main": "Gruntfile.js",
   "author": {
@@ -9,13 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitLab.iiia.csic.es/education/moodle-block_task_oriented_groups.git"
+    "url": "https://gitLab.iiia.csic.es/education/moodle-block_tog.git"
   },
   "scripts": {
     "postcss": "postcss --config postcss.js --output style/reboost.css style/reboost.css",
     "amd": "grunt amd",
     "amddebug": "grunt amddebug",
-    "build":"./createPluginZipFile.sh"
+    "build": "./createPluginZipFile.sh"
   },
   "devDependencies": {
     "grunt": "^1.0.4",

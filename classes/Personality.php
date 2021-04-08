@@ -13,16 +13,16 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle. If not, see <http://www.gnu.org/licenses/>.
-namespace block_task_oriented_groups;
+namespace block_tog;
 
 defined('MOODLE_INTERNAL') || die();
 
-use block_task_oriented_groups\PersonalityQuestionnaire;
+use block_tog\PersonalityQuestionnaire;
 
 /**
  * Class used to manage the personality of an user.
  *
- * @package block_task_oriented_groups
+ * @package block_tog
  * @copyright 2018 UDT-IA, IIIA-CSIC
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -121,10 +121,10 @@ class Personality {
             if ($previousAnswer !== false) {
 
                 $record->id = $previousAnswer->id;
-                $calculated = $DB->update_record('btog_personality', $record);
+                $calculated = $DB->update_record('block_tog_personality', $record);
             } else {
 
-                $calculated = $DB->insert_record('btog_personality', $record, false) === true;
+                $calculated = $DB->insert_record('block_tog_personality', $record, false) === true;
             }
         }
 
@@ -149,7 +149,7 @@ class Personality {
     public static function getPersonalityOf($userid) {
         global $DB;
 
-        $personality = $DB->get_record('btog_personality', array('userid' => $userid
+        $personality = $DB->get_record('block_tog_personality', array('userid' => $userid
         ), '*', IGNORE_MISSING);
         if ($personality !== false && isset($personality)) {
 
@@ -173,7 +173,7 @@ class Personality {
      */
     public static function isPersonalityCalculatedFor($userid) {
         global $DB;
-        return $DB->record_exists('btog_personality', array('userid' => $userid
+        return $DB->record_exists('block_tog_personality', array('userid' => $userid
         ));
     }
 }

@@ -13,16 +13,16 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle. If not, see <http://www.gnu.org/licenses/>.
-namespace block_task_oriented_groups;
+namespace block_tog;
 
 defined('MOODLE_INTERNAL') || die();
 
-use block_task_oriented_groups\IntelligencesQuestionnaire;
+use block_tog\IntelligencesQuestionnaire;
 
 /**
  * Class that represents the intelligences questionnaire.
  *
- * @package block_task_oriented_groups
+ * @package block_tog
  * @copyright 2018 UDT-IA, IIIA-CSIC
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -46,7 +46,7 @@ class Intelligences {
     public static function getIntelligencesOf($userid) {
         global $DB;
 
-        $intelligences = $DB->get_record('btog_intelligences', array('userid' => $userid
+        $intelligences = $DB->get_record('block_tog_intelligences', array('userid' => $userid
         ), '*', IGNORE_MISSING);
         if ($intelligences !== false && isset($intelligences)) {
 
@@ -126,19 +126,19 @@ class Intelligences {
             $record->logic_mathematics = $record->logic_mathematics / $total[1];
             $record->visual_spatial = $record->visual_spatial / $total[2];
             $record->kinestesica_corporal = $record->kinestesica_corporal / $total[3];
-            $record->musical_rhythmic = $record->verbal / $total[4];
-            $record->intrapersonal = $record->logic_mathematics / $total[5];
-            $record->interpersonal = $record->visual_spatial / $total[6];
-            $record->naturalist_environmental = $record->kinestesica_corporal / $total[7];
+            $record->musical_rhythmic = $record->musical_rhythmic / $total[4];
+            $record->intrapersonal = $record->intrapersonal / $total[5];
+            $record->interpersonal = $record->interpersonal / $total[6];
+            $record->naturalist_environmental = $record->naturalist_environmental / $total[7];
 
             $previousAnswer = self::getIntelligencesOf($userid);
             if ($previousAnswer !== false) {
 
                 $record->id = $previousAnswer->id;
-                $calculated = $DB->update_record('btog_intelligences', $record);
+                $calculated = $DB->update_record('block_tog_intelligences', $record);
             } else {
 
-                $calculated = $DB->insert_record('btog_intelligences', $record, false) === true;
+                $calculated = $DB->insert_record('block_tog_intelligences', $record, false) === true;
             }
         }
 
@@ -158,7 +158,7 @@ class Intelligences {
      */
     public static function isIntelligencesCalculatedFor($userid) {
         global $DB;
-        return $DB->record_exists('btog_intelligences', array('userid' => $userid
+        return $DB->record_exists('block_tog_intelligences', array('userid' => $userid
         ));
     }
 
@@ -171,6 +171,6 @@ class Intelligences {
     public static function valueToString($value) {
         $index = floor($value / 0.2);
         $index = min(4, $index);
-        return get_string('intelligences_value_' . $index, 'block_task_oriented_groups');
+        return get_string('intelligences_value_' . $index, 'block_tog');
     }
 }

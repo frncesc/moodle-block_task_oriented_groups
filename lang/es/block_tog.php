@@ -17,7 +17,7 @@
 /**
  * Plugin strings in Spanish are defined here.
  *
- * @package block_task_oriented_groups
+ * @package block_tog
  * @category string
  * @copyright 2018 UDT-IA, IIIA-CSIC
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -25,11 +25,11 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Bloque para hacer grupos orientados a tareas';
-$string['task_oriented_groups'] = 'Grupos orientados a tareas';
+$string['tog'] = 'Grupos orientados a tareas';
 
-$string['settings:heading'] = 'Este bloque utiliza un servicio externo para generar los grupos para realizar una tarea.';
+$string['settings:heading'] = 'Un bloque de Moodle para agrupar usuarios dependiendo de la tarea a realizar. Los grupos formados tienen diversidad en género, personalidad e inteligencia.';
 $string['settings:base_api_url_title'] = 'Base API URL';
-$string['settings:base_api_url_description'] = 'La URL del servidor que proporciona los servicios para generar los grupos para una tarea.';
+$string['settings:base_api_url_description'] = 'La URL al servicio externo que generará los grupos para una tarea. El servicio que proporcionamos (https://eduteams.iiia.csic.es/saas/) es gratuito sin ninguna limitación en la cantidad de llamadas. Desafortunadamente, tenemos algunos límites físicos en el servidor que solo pueden procesar algunas miles de solicitudes por segundo. Cuando se llama al servicio, almacena la información del encabezado HTTP como la dirección remota o el puerto, el número de estudiantes por equipo, la inteligencia de la solicitud, el rendimiento esperado para los grupos y la lista de estudiantes. Para cada estudiante se almacena un identificador y su personalidad e inteligencia asociadas. El identificador es anónimo, por lo que el servicio que no puede conocer la persona en Moodle asociada con el identificador. Además, almacenó los grupos formados para los estudiantes. Por otro lado, almacenó los comentarios proporcionados por los maestros que se utilizan para evaluar el desempeño de los grupos formados.';
 
 $string['main:composite'] = 'Crea un nuevo grupo por tarea';
 $string['main:fill_personality_test'] = 'Completa tu test de personalidad';
@@ -42,6 +42,9 @@ $string['main:feedback_test'] = 'Proporcionar retroalimentación de los grupos c
 $string['personality_test_title'] = 'Test de personalidad';
 $string['personality_test_heading'] = 'Test de personalidad';
 $string['personality_test_go_to_personality'] = 'Mostrar mi personalidad';
+$string['personality_test_go_to_course'] = 'Volver al curso';
+$string['personality_test_go_to_intelligences_test'] = 'Completa test de inteligencias';
+$string['personality_test_storing_msg'] = 'Desant reposta';
 
 $string['personality_question_0'] = 'Yo soy';
 $string['personality_question_0_answer_0'] = 'Mujer';
@@ -165,6 +168,9 @@ $string['personality_question_20_answer_2'] = 'Indiferente';
 $string['intelligences_test_title'] = 'Prueba de inteligencias';
 $string['intelligences_test_heading'] = 'Prueba de inteligencias';
 $string['intelligences_test_go_to_intelligences'] = 'Mostrar mis inteligencias';
+$string['intelligences_test_go_to_course'] = 'Volver al curso';
+$string['intelligences_test_go_to_personality_test'] = 'Completa test de personalidad';
+$string['intelligences_test_storing_msg'] = 'Desant reposta';
 
 $string['intelligence_question_0'] = 'No me es difícil decir lo que pienso en el curso de una discusión o debate';
 $string['intelligence_question_0_help'] = 'Ejemplo: cuando se discute sobre la independencia de Catalunya, me gusta expresar mi opinión.';
@@ -287,39 +293,39 @@ $string['store_intelligences_answer_error_title'] = 'Error';
 $string['store_intelligences_answer_error_text'] = 'No se pudo almacenar la respuesta de tu inteligencia.';
 $string['store_intelligences_answer_error_continue'] = 'De acuerdo';
 
-$string['privacy:metadata:btog_personality_answers'] = 'Información sobre las respuestas del usuario a las preguntas del test de personalidad.';
-$string['privacy:metadata:btog_personality_answers:userid'] = 'El ID del usuario que responde la pregunta.';
-$string['privacy:metadata:btog_personality_answers:question'] = 'El identificador de la pregunta.';
-$string['privacy:metadata:btog_personality_answers:answer'] = 'El identificador de la respuesta en la pregunta.';
-$string['privacy:export:btog_personality_answers'] = 'Test de personalidad';
+$string['privacy:metadata:block_tog_perso_answers'] = 'Información sobre las respuestas del usuario a las preguntas del test de personalidad.';
+$string['privacy:metadata:block_tog_perso_answers:userid'] = 'El ID del usuario que responde la pregunta.';
+$string['privacy:metadata:block_tog_perso_answers:question'] = 'El identificador de la pregunta.';
+$string['privacy:metadata:block_tog_perso_answers:answer'] = 'El identificador de la respuesta en la pregunta.';
+$string['privacy:export:block_tog_perso_answers'] = 'Test de personalidad';
 
-$string['privacy:metadata:btog_intelligences_answers'] = 'Información sobre las respuestas del usuario a las preguntas del test de inteligencias.';
-$string['privacy:metadata:btog_intelligences_answers:userid'] = 'El ID del usuario que responde la pregunta.';
-$string['privacy:metadata:btog_intelligences_answers:question'] = 'El identificador de la pregunta.';
-$string['privacy:metadata:btog_intelligences_answers:answer'] = 'El identificador de la respuesta en la pregunta.';
-$string['privacy:export:btog_intelligences_answers'] = 'Prueba de inteligencias';
+$string['privacy:metadata:block_tog_intel_answers'] = 'Información sobre las respuestas del usuario a las preguntas del test de inteligencias.';
+$string['privacy:metadata:block_tog_intel_answers:userid'] = 'El ID del usuario que responde la pregunta.';
+$string['privacy:metadata:block_tog_intel_answers:question'] = 'El identificador de la pregunta.';
+$string['privacy:metadata:block_tog_intel_answers:answer'] = 'El identificador de la respuesta en la pregunta.';
+$string['privacy:export:block_tog_intel_answers'] = 'Prueba de inteligencias';
 
-$string['privacy:metadata:btog_personality'] = 'Información sobre la personalidad de un usuario.';
-$string['privacy:metadata:btog_personality:userid'] = 'El ID del usuario al que se refiere la personalidad.';
-$string['privacy:metadata:btog_personality:type'] = 'El tipo de personalidad.';
-$string['privacy:metadata:btog_personality:gender'] = 'El género del usuario.';
-$string['privacy:metadata:btog_personality:judgment'] = 'El factor de personalidad del juicio del usuario.';
-$string['privacy:metadata:btog_personality:attitude'] = 'El factor de actitud de la personalidad del usuario.';
-$string['privacy:metadata:btog_personality:perception'] = 'La percepción del factor de personalidad del usuario.';
-$string['privacy:metadata:btog_personality:gender'] = 'El factor de personalidad extrovertido del usuario.';
-$string['privacy:export:btog_personality'] = 'Personalidad';
+$string['privacy:metadata:block_tog_personality'] = 'Información sobre la personalidad de un usuario.';
+$string['privacy:metadata:block_tog_personality:userid'] = 'El ID del usuario al que se refiere la personalidad.';
+$string['privacy:metadata:block_tog_personality:type'] = 'El tipo de personalidad.';
+$string['privacy:metadata:block_tog_personality:gender'] = 'El género del usuario.';
+$string['privacy:metadata:block_tog_personality:judgment'] = 'El factor de personalidad del juicio del usuario.';
+$string['privacy:metadata:block_tog_personality:attitude'] = 'El factor de actitud de la personalidad del usuario.';
+$string['privacy:metadata:block_tog_personality:perception'] = 'La percepción del factor de personalidad del usuario.';
+$string['privacy:metadata:block_tog_personality:gender'] = 'El factor de personalidad extrovertido del usuario.';
+$string['privacy:export:block_tog_personality'] = 'Personalidad';
 
-$string['privacy:metadata:btog_intelligences'] = 'Información sobre las inteligencias de un usuario.';
-$string['privacy:metadata:btog_intelligences:userid'] = 'El ID del usuario al que se refieren las inteligencias.';
-$string['privacy:metadata:btog_intelligences:verbal'] = 'El factor de inteligencia verbal del usuario.';
-$string['privacy:metadata:btog_intelligences:logic_mathematics'] = 'El factor de inteligencia lógico / matemático del usuario.';
-$string['privacy:metadata:btog_intelligences:visual_spatial'] = 'El factor de inteligencia visual / espacial del usuario.';
-$string['privacy:metadata:btog_intelligences:kinestesica_corporal'] = 'El factor de inteligencia cinestésica / corporal del usuario.';
-$string['privacy:metadata:btog_intelligences:musical_rhythmic'] = 'El factor de inteligencia musical / rítmica del usuario.';
-$string['privacy:metadata:btog_intelligences:intrapersonal'] = 'El factor de inteligencia intrapersonal del usuario.';
-$string['privacy:metadata:btog_intelligences:interpersonal'] = 'El factor de inteligencia interpersonal del usuario.';
-$string['privacy:metadata:btog_intelligences:naturalist_environmental'] = 'El factor naturalista / inteligencia ambiental del usuario.';
-$string['privacy:export:btog_intelligences'] = 'Inteligencias';
+$string['privacy:metadata:block_tog_intelligences'] = 'Información sobre las inteligencias de un usuario.';
+$string['privacy:metadata:block_tog_intelligences:userid'] = 'El ID del usuario al que se refieren las inteligencias.';
+$string['privacy:metadata:block_tog_intelligences:verbal'] = 'El factor de inteligencia verbal del usuario.';
+$string['privacy:metadata:block_tog_intelligences:logic_mathematics'] = 'El factor de inteligencia lógico / matemático del usuario.';
+$string['privacy:metadata:block_tog_intelligences:visual_spatial'] = 'El factor de inteligencia visual / espacial del usuario.';
+$string['privacy:metadata:block_tog_intelligences:kinestesica_corporal'] = 'El factor de inteligencia cinestésica / corporal del usuario.';
+$string['privacy:metadata:block_tog_intelligences:musical_rhythmic'] = 'El factor de inteligencia musical / rítmica del usuario.';
+$string['privacy:metadata:block_tog_intelligences:intrapersonal'] = 'El factor de inteligencia intrapersonal del usuario.';
+$string['privacy:metadata:block_tog_intelligences:interpersonal'] = 'El factor de inteligencia interpersonal del usuario.';
+$string['privacy:metadata:block_tog_intelligences:naturalist_environmental'] = 'El factor naturalista / inteligencia ambiental del usuario.';
+$string['privacy:export:block_tog_intelligences'] = 'Inteligencias';
 
 $string['personality_title'] = 'Personalidad';
 $string['personality_heading'] = 'Personalidad';
@@ -374,6 +380,9 @@ $string['personality_ISTJ_name'] = 'El logistico';
 $string['personality_ISTP_description'] = 'Experimentadores audaces y prácticos, maestros de todo tipo de herramientas.';
 $string['personality_ISTP_more'] = 'https://www.16personalities.com/istp-personality';
 $string['personality_ISTP_name'] = 'El virtuoso';
+$string['personality_error_not_answered_all_questions'] = 'Tienes que responder todas las preguntas del cuestionario para poder saber tu personalidad';
+$string['personality_go_to_course'] = 'Volver al curso';
+$string['personality_go_to_intelligences_test'] = 'Completa test de inteligencias';
 
 $string['intelligences_title'] = 'Inteligencias';
 $string['intelligences_heading'] = 'Inteligencias';
@@ -392,6 +401,9 @@ $string['intelligences_naturalist_environmental_factor'] = 'Inteligencia natural
 $string['intelligences_verbal_factor'] = 'Inteligencia lingüística';
 $string['intelligences_visual_spatial_factor'] = 'Inteligencia visual-espacial';
 $string['intelligences_go_to_test'] = 'Modificar la prueba de inteligencias.';
+$string['intelligences_error_not_answered_all_questions'] = 'Tienes que responder todas las preguntas del cuestionario para poder saber tus inteligencias';
+$string['intelligences_go_to_course'] = 'Volver al curso';
+$string['intelligences_go_to_personality_test'] = 'Completa test de personalidad';
 
 $string['composite_title'] = 'Grupos compuestos';
 $string['composite_heading'] = 'Grupos compuestos por tarea';

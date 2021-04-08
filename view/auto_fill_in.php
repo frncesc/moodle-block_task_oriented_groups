@@ -17,15 +17,16 @@ require_once ('../../../config.php');
 require_once ($CFG->dirroot . '/group/lib.php');
 require_once ($CFG->libdir . '/tablelib.php');
 
-use block_task_oriented_groups\Personality;
-use block_task_oriented_groups\Intelligences;
+use block_tog\Personality;
+use block_tog\Intelligences;
 
 $courseid = optional_param('courseid', 0, PARAM_INT);
 $PAGE->set_pagelayout('standard');
 $PAGE->set_context(context_system::instance());
-$PAGE->set_title(get_string('auto_fill_in_title', 'block_task_oriented_groups'));
-$PAGE->set_heading(get_string('auto_fill_in_heading', 'block_task_oriented_groups'));
-$PAGE->set_url($CFG->wwwroot . '/blocks/task_oriented_groups/view/auto_fill_in.php');
+$PAGE->set_title(get_string('auto_fill_in_title', 'block_tog'));
+$PAGE->set_heading(get_string('auto_fill_in_heading', 'block_tog'));
+$PAGE->set_url($CFG->wwwroot . '/blocks/tog/view/auto_fill_in.php');
+$PAGE->add_body_class('block_task_oriented_group');
 
 $course = $DB->get_record('course', array('id' => $courseid
 ), '*', MUST_EXIST);
@@ -37,10 +38,10 @@ $PAGE->set_context($context);
 echo $OUTPUT->header();
 $table = new html_table();
 $table->head = array(
-    new html_table_cell(get_string('auto_fill_in_column_name', 'block_task_oriented_groups')),
-    new html_table_cell(get_string('auto_fill_in_column_personality', 'block_task_oriented_groups')),
+    new html_table_cell(get_string('auto_fill_in_column_name', 'block_tog')),
+    new html_table_cell(get_string('auto_fill_in_column_personality', 'block_tog')),
     new html_table_cell(
-            get_string('auto_fill_in_column_intelligences', 'block_task_oriented_groups'))
+            get_string('auto_fill_in_column_intelligences', 'block_tog'))
 );
 $table->head[0]->attributes['class'] = 'col-6';
 $table->head[1]->attributes['class'] = 'col-3 text-center';
@@ -61,17 +62,17 @@ foreach (groups_get_potential_members($course->id) as $enrolledUser) {
         $personalityFilled .= html_writer::div(
                 $OUTPUT->pix_icon('i/grade_correct',
                         get_string('auto_fill_in_column_personality_filled',
-                                'block_task_oriented_groups')), 'personality-cell-success');
+                                'block_tog')), 'personality-cell-success');
         $personalityFilled .= html_writer::div(
                 html_writer::tag('button',
-                        get_string('auto_fill_in_submit_personality', 'block_task_oriented_groups'),
+                        get_string('auto_fill_in_submit_personality', 'block_tog'),
                         array('class' => 'auto-fill-in-personality'
                         )), 'personality-cell-submit');
         $personalityFilled .= html_writer::end_div();
     } else {
 
         $personalityFilled = $OUTPUT->pix_icon('i/grade_correct',
-                get_string('auto_fill_in_column_personality_filled', 'block_task_oriented_groups'));
+                get_string('auto_fill_in_column_personality_filled', 'block_tog'));
     }
     $intelligencesFilled = null;
     if ($intelligences == false) {
@@ -82,17 +83,17 @@ foreach (groups_get_potential_members($course->id) as $enrolledUser) {
         $intelligencesFilled .= html_writer::div(
                 $OUTPUT->pix_icon('i/grade_correct',
                         get_string('auto_fill_in_column_intelligences_filled',
-                                'block_task_oriented_groups')), 'intelligences-cell-success');
+                                'block_tog')), 'intelligences-cell-success');
         $intelligencesFilled .= html_writer::div(
                 html_writer::tag('button',
-                        get_string('auto_fill_in_submit_intelligences', 'block_task_oriented_groups'),
+                        get_string('auto_fill_in_submit_intelligences', 'block_tog'),
                         array('class' => 'auto-fill-in-intelligences'
                         )), 'intelligences-cell-submit');
         $intelligencesFilled .= html_writer::end_div();
     } else {
 
         $intelligencesFilled = $OUTPUT->pix_icon('i/grade_correct',
-                get_string('auto_fill_in_column_intelligences_filled', 'block_task_oriented_groups'));
+                get_string('auto_fill_in_column_intelligences_filled', 'block_tog'));
     }
     $rowPage = floor((count($table->data)) / 20) + 1;
     $row = new html_table_row(
@@ -118,5 +119,5 @@ echo html_writer::div(
         html_writer::tag('ul', implode($pageItems), array('class' => 'pagination flex-wrap'
         )), 'row justify-content-md-center');
 echo html_writer::end_div();
-$PAGE->requires->js_call_amd('block_task_oriented_groups/auto_fill_in', 'initialise');
+$PAGE->requires->js_call_amd('block_tog/auto_fill_in', 'initialise');
 echo $OUTPUT->footer();

@@ -16,7 +16,7 @@
 /**
  * General configurations of the block.
  *
- * @package block_task_oriented_groups
+ * @package block_tog
  * @copyright 2018 UDT-IA, IIIA-CSIC
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,13 +25,14 @@ if ($ADMIN->fulltree) {
 
     // Introductory explanation.
     $settings->add(
-            new admin_setting_heading('task_oriented_groups/pluginname', '',
-                    new lang_string('settings:heading', 'block_task_oriented_groups')));
+            new admin_setting_heading('block_tog/pluginname', '',
+                    new lang_string('settings:heading', 'block_tog')));
 
     // The URL to the SAAS
     $settings->add(
-            new admin_setting_configtext('task_oriented_groups/base_api_url',
-                    get_string('settings:base_api_url_title', 'block_task_oriented_groups'),
-                    get_string('settings:base_api_url_description', 'block_task_oriented_groups'),
-                    'https://eduteams.iiia.csic.es/saas/', PARAM_URL));
+            new admin_setting_configtext('block_tog/base_api_url',
+                    new lang_string('settings:base_api_url_title', 'block_tog'),
+                    new lang_string('settings:base_api_url_description',
+                            'block_tog'), 'https://eduteams.iiia.csic.es/saas/',
+                    PARAM_URL));
 }

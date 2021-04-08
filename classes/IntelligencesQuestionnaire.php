@@ -13,14 +13,14 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle. If not, see <http://www.gnu.org/licenses/>.
-namespace block_task_oriented_groups;
+namespace block_tog;
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
  * Class that represents the intelligence questionnaire.
  *
- * @package block_task_oriented_groups
+ * @package block_tog
  * @copyright 2018 UDT-IA, IIIA-CSIC
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -126,7 +126,7 @@ class IntelligencesQuestionnaire {
      * Return the text associated to the question.
      */
     public static function getQuestionTextOf($index) {
-        return get_string('intelligence_question_' . $index, 'block_task_oriented_groups');
+        return get_string('intelligence_question_' . $index, 'block_tog');
     }
 
     /**
@@ -147,7 +147,7 @@ class IntelligencesQuestionnaire {
      * Return the text associated to the specified answers in the question.
      */
     public static function getAnswerQuestionTextOf($index) {
-        return get_string('intelligence_question_answer_' . $index, 'block_task_oriented_groups');
+        return get_string('intelligence_question_answer_' . $index, 'block_tog');
     }
 
     /**
@@ -181,7 +181,7 @@ class IntelligencesQuestionnaire {
      */
     public static function getAnswersOf($userid) {
         global $DB;
-        return $DB->get_records('btog_intelligences_answers', array('userid' => $userid
+        return $DB->get_records('block_tog_intel_answers', array('userid' => $userid
         ), 'question', 'question,answer');
     }
 
@@ -196,21 +196,21 @@ class IntelligencesQuestionnaire {
     public static function setIntelligencesAnswerFor($question, $answer, $userid) {
         global $DB;
         $updated = false;
-        $previousAnswer = $DB->get_record('btog_intelligences_answers',
+        $previousAnswer = $DB->get_record('block_tog_intel_answers',
                 array('userid' => $userid, 'question' => $question
                 ), '*', IGNORE_MISSING);
 
         if ($previousAnswer !== false && isset($previousAnswer)) {
 
             $previousAnswer->answer = $answer;
-            $updated = $DB->update_record('btog_intelligences_answers', $previousAnswer);
+            $updated = $DB->update_record('block_tog_intel_answers', $previousAnswer);
         } else {
 
             $record = new \stdClass();
             $record->userid = $userid;
             $record->question = $question;
             $record->answer = $answer;
-            $updated = $DB->insert_record('btog_intelligences_answers', $record, false) === true;
+            $updated = $DB->insert_record('block_tog_intel_answers', $record, false) === true;
         }
 
         return $updated;

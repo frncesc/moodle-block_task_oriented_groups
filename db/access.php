@@ -15,7 +15,7 @@
 // along with Moodle. If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin version and other meta-data are defined here.
+ * Capabilities.
  *
  * @package block_tog
  * @copyright 2018 UDT-IA, IIIA-CSIC
@@ -23,8 +23,19 @@
  */
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'block_tog';
-$plugin->version = 2020043000;
-$plugin->requires = 2018051700;
-$plugin->maturity = MATURITY_STABLE;
-$plugin->release = '1.1.0';
+$capabilities = array(
+
+    'block/tog:addinstance' => array('riskbitmask' => RISK_SPAM | RISK_XSS,
+
+        'captype' => 'write', 'contextlevel' => CONTEXT_BLOCK,
+        'archetypes' => array('editingteacher' => CAP_ALLOW, 'manager' => CAP_ALLOW
+        ), 'clonepermissionsfrom' => 'moodle/site:manageblocks'
+    ),
+
+    'block/tog:myaddinstance' => array('riskbitmask' => RISK_SPAM | RISK_XSS,
+
+        'captype' => 'write', 'contextlevel' => CONTEXT_BLOCK,
+        'archetypes' => array('editingteacher' => CAP_ALLOW, 'manager' => CAP_ALLOW
+        )
+    )
+);

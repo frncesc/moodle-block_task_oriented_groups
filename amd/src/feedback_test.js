@@ -13,7 +13,7 @@
 /**
  * Javascript components used to manage the feedback questionaire.
  *
- * @package block_task_oriented_groups
+ * @package block_tog
  * @copyright 2018 UDT-IA, IIIA-CSIC
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -58,7 +58,7 @@ define([ 'jquery', 'core/ajax', 'core/str', 'core/notification' ], function($, a
 			answerValues.push(value);
 		}
 		var promises = ajax.call([ {
-		  methodname : 'block_task_oriented_groups_feedback_group',
+		  methodname : 'block_tog_feedback_group',
 		  args : {
 		    'feedbackid' : feedbackId,
 		    'answervalues' : answerValues
@@ -70,13 +70,13 @@ define([ 'jquery', 'core/ajax', 'core/str', 'core/notification' ], function($, a
 
 				Str.get_strings([ {
 				  key : 'feedback_test_groups_error_title',
-				  component : 'block_task_oriented_groups'
+				  component : 'block_tog'
 				}, {
 				  key : 'feedback_test_groups_error_text',
-				  component : 'block_task_oriented_groups'
+				  component : 'block_tog'
 				}, {
 				  key : 'feedback_test_groups_error_continue',
-				  component : 'block_task_oriented_groups'
+				  component : 'block_tog'
 				} ]).done(function(s) {
 					$('#feedback_test__submit').show();
 					$('#feedback_test__progress').hide();

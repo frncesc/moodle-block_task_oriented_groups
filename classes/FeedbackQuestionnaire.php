@@ -13,14 +13,14 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle. If not, see <http://www.gnu.org/licenses/>.
-namespace block_task_oriented_groups;
+namespace block_tog;
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
  * Class that represents the feedback questionnaire.
  *
- * @package block_task_oriented_groups
+ * @package block_tog
  * @copyright 2018 UDT-IA, IIIA-CSIC
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -50,14 +50,14 @@ class FeedbackQuestionnaire {
      * Return the text associated to the question.
      */
     public static function getQuestionTextOf($index) {
-        return get_string('feedback_question_' . $index, 'block_task_oriented_groups');
+        return get_string('feedback_question_' . $index, 'block_tog');
     }
 
     /**
      * Return the text associated to the specified answers in the question.
      */
     public static function getAnswerQuestionTextOf($index) {
-        return get_string('feedback_question_answer_' . $index, 'block_task_oriented_groups');
+        return get_string('feedback_question_answer_' . $index, 'block_tog');
     }
 
     /**

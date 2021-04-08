@@ -18,19 +18,19 @@ global $CFG;
 require_once ($CFG->libdir . "/externallib.php");
 require_once ($CFG->dirroot . '/group/lib.php');
 
-use block_task_oriented_groups\PersonalityQuestionnaire;
-use block_task_oriented_groups\Personality;
-use block_task_oriented_groups\IntelligencesQuestionnaire;
-use block_task_oriented_groups\Intelligences;
+use block_tog\PersonalityQuestionnaire;
+use block_tog\Personality;
+use block_tog\IntelligencesQuestionnaire;
+use block_tog\Intelligences;
 
 /**
  * External methods necessary to do ajax interaction.
  *
- * @package block_task_oriented_groups
+ * @package block_tog
  * @copyright 2018 UDT-IA, IIIA-CSIC
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_task_oriented_groups_external extends external_api {
+class block_tog_external extends external_api {
 
     /**
      * The function called to get the informatiomn of the parameter to store the personality answer.
@@ -316,7 +316,7 @@ class block_task_oriented_groups_external extends external_api {
                 $data->requirements[] = $requirementData;
             }
             $payload = json_encode($data);
-            $config = get_config('task_oriented_groups');
+            $config = get_config('block_tog');
             $composite_url = str_replace('//composite', '/composite',
                     $config->base_api_url . '/composite');
             $options = array(CURLOPT_POST => 1, CURLOPT_HEADER => 0, CURLOPT_URL => $composite_url,
@@ -366,7 +366,7 @@ class block_task_oriented_groups_external extends external_api {
                                     $groupData->description .= ' ' .
                                             get_string(
                                                     'externallib:group_description_reponsable_of',
-                                                    'block_task_oriented_groups');
+                                                    'block_tog');
                                     $intelligenceIndex = 1;
                                     foreach ($person->intelligences as $intelligence) {
 
@@ -378,7 +378,7 @@ class block_task_oriented_groups_external extends external_api {
                                             $groupData->description .= ' ' .
                                                     get_string(
                                                             'externallib:group_description_last_intelligence_and',
-                                                            'block_task_oriented_groups') . ' ';
+                                                            'block_tog') . ' ';
                                         } else {
 
                                             $groupData->description .= ', ';
@@ -387,14 +387,14 @@ class block_task_oriented_groups_external extends external_api {
                                         $groupData->description .= get_string(
                                                 'externallib:group_description_intelligence_' .
                                                 strtolower($intelligence),
-                                                'block_task_oriented_groups');
+                                                'block_tog');
                                         $intelligenceIndex++;
                                     }
                                 } else {
                                     $groupData->description .= ' ' .
                                             get_string(
                                                     'externallib:group_description_no_responsibility',
-                                                    'block_task_oriented_groups');
+                                                    'block_tog');
                                 }
                                 $groupData->description .= '</li>';
                             }
@@ -424,7 +424,7 @@ class block_task_oriented_groups_external extends external_api {
                                 $feedbackRecord->groupingid = $groupingid;
                                 $feedbackRecord->groupid = $groupid;
                                 $feedbackRecord->feedbackid = $team->feedbackId;
-                                if (!$DB->insert_record('btog_composed', $feedbackRecord, false)) {
+                                if (!$DB->insert_record('block_tog_composed', $feedbackRecord, false)) {
 
                                     $message .= "\nCould not store the feedback identifier to the group " .
                                             $groupid;
@@ -625,7 +625,7 @@ class block_task_oriented_groups_external extends external_api {
             $feedbackid = $params['feedbackid'];
             $answervalues = $params['answervalues'];
 
-            $composed = $DB->get_record('btog_composed', array('feedbackid' => $feedbackid
+            $composed = $DB->get_record('block_tog_composed', array('feedbackid' => $feedbackid
             ), '*', IGNORE_MISSING);
             if ($composed !== false && isset($composed)) {
 
@@ -634,7 +634,7 @@ class block_task_oriented_groups_external extends external_api {
                 $data->answerValues = $answervalues;
 
                 $payload = json_encode($data);
-                $config = get_config('task_oriented_groups');
+                $config = get_config('block_tog');
                 $composite_url = str_replace('//composite', '/composite',
                         $config->base_api_url . '/composite/feedback');
                 $options = array(CURLOPT_POST => 1, CURLOPT_HEADER => 0,
@@ -654,7 +654,7 @@ class block_task_oriented_groups_external extends external_api {
                 } else {
 
                     $updated = true;
-                    $DB->delete_records('btog_composed', array('id' => $composed->id
+                    $DB->delete_records('block_tog_composed', array('id' => $composed->id
                     ));
                 }
                 curl_close($ch);

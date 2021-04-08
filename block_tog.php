@@ -15,23 +15,23 @@
 // along with Moodle. If not, see <http://www.gnu.org/licenses/>.
 defined('MOODLE_INTERNAL') || die();
 
-use block_task_oriented_groups\Personality;
-use block_task_oriented_groups\Intelligences;
+use block_tog\Personality;
+use block_tog\Intelligences;
 
 /**
- * Block task_oriented_groups is defined here.
+ * Block tog is defined here.
  *
- * @package block_task_oriented_groups
+ * @package block_tog
  * @copyright 2018 UDT-IA, IIIA-CSIC
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_task_oriented_groups extends block_base {
+class block_tog extends block_base {
 
     /**
      * Initializes the block, called by the constructor
      */
     public function init() {
-        $this->title = get_string('task_oriented_groups', 'block_task_oriented_groups');
+        $this->title = get_string('tog', 'block_tog');
     }
 
     /**
@@ -62,55 +62,63 @@ class block_task_oriented_groups extends block_base {
 
         if (has_capability('moodle/site:config', $this->page->context)) {
 
-            $contenturl = new moodle_url('/blocks/task_oriented_groups/view/auto_fill_in.php',
+            $contenturl = new moodle_url('/blocks/tog/view/auto_fill_in.php',
                     array('courseid' => $COURSE->id
                     ));
             $contentlink = html_writer::link($contenturl,
-                    get_string('main:auto_fill_in', 'block_task_oriented_groups'));
+                    get_string('main:auto_fill_in', 'block_tog'));
             $contents[] = html_writer::tag('li', $contentlink);
         }
 
         if (has_capability('moodle/course:managegroups', $this->page->context)) {
 
-            $contenturl = new moodle_url('/blocks/task_oriented_groups/view/composite.php',
+            $contenturl = new moodle_url('/blocks/tog/view/composite.php',
                     array('courseid' => $COURSE->id
                     ));
             $contentlink = html_writer::link($contenturl,
-                    get_string('main:composite', 'block_task_oriented_groups'));
+                    get_string('main:composite', 'block_tog'));
             $contents[] = html_writer::tag('li', $contentlink);
-            $contenturl = new moodle_url('/blocks/task_oriented_groups/view/feedback_test.php',
+            $contenturl = new moodle_url('/blocks/tog/view/feedback_test.php',
                     array('courseid' => $COURSE->id
                     ));
             $contentlink = html_writer::link($contenturl,
-                    get_string('main:feedback_test', 'block_task_oriented_groups'));
+                    get_string('main:feedback_test', 'block_tog'));
             $contents[] = html_writer::tag('li', $contentlink);
         }
 
         if (Personality::isPersonalityCalculatedForCurrentUser()) {
 
-            $contenturl = new moodle_url('/blocks/task_oriented_groups/view/personality.php');
+            $contenturl = new moodle_url('/blocks/tog/view/personality.php',
+                    array('courseid' => $COURSE->id
+                    ));
             $contentlink = html_writer::link($contenturl,
-                    get_string('main:my_personality', 'block_task_oriented_groups'));
+                    get_string('main:my_personality', 'block_tog'));
             $contents[] = html_writer::tag('li', $contentlink);
         } else {
 
-            $contenturl = new moodle_url('/blocks/task_oriented_groups/view/personality_test.php');
+            $contenturl = new moodle_url('/blocks/tog/view/personality_test.php',
+                    array('courseid' => $COURSE->id
+                    ));
             $contentlink = html_writer::link($contenturl,
-                    get_string('main:fill_personality_test', 'block_task_oriented_groups'));
+                    get_string('main:fill_personality_test', 'block_tog'));
             $contents[] = html_writer::tag('li', $contentlink);
         }
 
         if (Intelligences::isIntelligencesCalculatedForCurrentUser()) {
 
-            $contenturl = new moodle_url('/blocks/task_oriented_groups/view/intelligences.php');
+            $contenturl = new moodle_url('/blocks/tog/view/intelligences.php',
+                    array('courseid' => $COURSE->id
+                    ));
             $contentlink = html_writer::link($contenturl,
-                    get_string('main:my_intelligences', 'block_task_oriented_groups'));
+                    get_string('main:my_intelligences', 'block_tog'));
             $contents[] = html_writer::tag('li', $contentlink);
         } else {
 
-            $contenturl = new moodle_url('/blocks/task_oriented_groups/view/intelligences_test.php');
+            $contenturl = new moodle_url('/blocks/tog/view/intelligences_test.php',
+                    array('courseid' => $COURSE->id
+                    ));
             $contentlink = html_writer::link($contenturl,
-                    get_string('main:fill_intelligences_test', 'block_task_oriented_groups'));
+                    get_string('main:fill_intelligences_test', 'block_tog'));
             $contents[] = html_writer::tag('li', $contentlink);
         }
         $this->content->text = html_writer::tag('ol', implode('', $contents),

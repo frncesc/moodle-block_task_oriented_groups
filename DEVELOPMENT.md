@@ -26,8 +26,8 @@ With the help of **docker-compose**, you can run a Moodle for test the block fol
 
 ~~~sh
 git clone https://github.com/moodlehq/moodle-docker.git
-wget https://download.moodle.org/download.php/stable37/moodle-3.7.tgz
-tar zxvf moodle-3.7.tgz
+Download the latest moodle https://download.moodle.org/releases/latest/
+tar zxvf moodle-latest-XX.tgz
 chmod -R o+x moodle
 chmod -R g+x moodle
 ~~~

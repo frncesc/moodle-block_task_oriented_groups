@@ -19,14 +19,15 @@ global $PAGE;
 global $DB;
 global $OUTPUT;
 require_once ($CFG->dirroot . '/group/lib.php');
-use block_task_oriented_groups\FeedbackQuestionnaire;
+use block_tog\FeedbackQuestionnaire;
 
 $courseid = optional_param('courseid', 0, PARAM_INT);
 $PAGE->set_pagelayout('standard');
 $PAGE->set_context(context_system::instance());
-$PAGE->set_title(get_string('feedback_test_title', 'block_task_oriented_groups'));
-$PAGE->set_heading(get_string('feedback_test_heading', 'block_task_oriented_groups'));
-$PAGE->set_url($CFG->wwwroot . '/blocks/task_oriented_groups/view/feedback_test.php');
+$PAGE->set_title(get_string('feedback_test_title', 'block_tog'));
+$PAGE->set_heading(get_string('feedback_test_heading', 'block_tog'));
+$PAGE->set_url($CFG->wwwroot . '/blocks/tog/view/feedback_test.php');
+$PAGE->add_body_class('block_task_oriented_group');
 
 $course = $DB->get_record('course', array('id' => $courseid
 ), '*', MUST_EXIST);
@@ -52,7 +53,7 @@ if (has_capability('moodle/course:managegroups', $context)) {
         $groups = groups_get_all_groups($course->id, 0, $grouping->id);
         foreach ($groups as $group) {
 
-            $composed = $DB->get_record('btog_composed',
+            $composed = $DB->get_record('block_tog_composed',
                     array('groupingid' => $grouping->id, 'groupid' => $group->id
                     ), '*', IGNORE_MISSING);
             if ($composed !== false && isset($composed)) {
@@ -85,9 +86,9 @@ if (has_capability('moodle/course:managegroups', $context)) {
                     ));
             $group_selector .= html_writer::start_div('form-group');
             $group_selector .= html_writer::tag('label',
-                    get_string('feedback_test_group_selector', 'block_task_oriented_groups') .
+                    get_string('feedback_test_group_selector', 'block_tog') .
                     '&nbsp;&nbsp' .
-                    $OUTPUT->help_icon('feedback_test_group_selector', 'block_task_oriented_groups',
+                    $OUTPUT->help_icon('feedback_test_group_selector', 'block_tog',
                             ''),
                     array('for' => 'feedback_test__group_selector_for_' . $grouping->id
                     ));
@@ -104,9 +105,9 @@ if (has_capability('moodle/course:managegroups', $context)) {
     $grouping_selector = html_writer::start_div('form-row');
     $grouping_selector .= html_writer::start_div('form-group');
     $grouping_selector .= html_writer::tag('label',
-            get_string('feedback_test_grouping_selector', 'block_task_oriented_groups') .
+            get_string('feedback_test_grouping_selector', 'block_tog') .
             '&nbsp;&nbsp' .
-            $OUTPUT->help_icon('feedback_test_grouping_selector', 'block_task_oriented_groups', ''),
+            $OUTPUT->help_icon('feedback_test_grouping_selector', 'block_tog', ''),
             array('for' => 'feedback_test__grouping_selector'
             ));
     $grouping_selector .= html_writer::start_tag('select',
@@ -119,7 +120,7 @@ if (has_capability('moodle/course:managegroups', $context)) {
     $grouping_selector .= html_writer::end_div();
 
     $content = html_writer::div(
-            get_string('feedback_test_alert_empty', 'block_task_oriented_groups'),
+            get_string('feedback_test_alert_empty', 'block_tog'),
             'alert alert-danger', array('role' => 'alert', 'id' => 'feedback_test__alert_empty'
             ));
     if ($default_feedbackid == null) {
@@ -136,8 +137,8 @@ if (has_capability('moodle/course:managegroups', $context)) {
         $content .= html_writer::start_tag('fieldset', array('class' => 'border p-2'
         ));
         $content .= html_writer::tag('legend',
-                get_string('feedback_test_group', 'block_task_oriented_groups') . '&nbsp;&nbsp' .
-                $OUTPUT->help_icon('feedback_test_group', 'block_task_oriented_groups', ''),
+                get_string('feedback_test_group', 'block_tog') . '&nbsp;&nbsp' .
+                $OUTPUT->help_icon('feedback_test_group', 'block_tog', ''),
                 array('class' => 'w-auto'
                 ));
         $content .= $grouping_selector;
@@ -197,7 +198,7 @@ if (has_capability('moodle/course:managegroups', $context)) {
         $content .= html_writer::start_div('container');
         $content .= html_writer::start_div('row justify-content-center');
         $content .= html_writer::tag('button',
-                get_string('feedback_test_submit', 'block_task_oriented_groups'),
+                get_string('feedback_test_submit', 'block_tog'),
                 array('type' => 'button', 'class' => 'btn btn-primary',
                     'id' => 'feedback_test__submit'
                 ));
@@ -207,7 +208,7 @@ if (has_capability('moodle/course:managegroups', $context)) {
         $content .= html_writer::div(
                 html_writer::div(
                         html_writer::span(
-                                get_string('feedback_test_progress', 'block_task_oriented_groups') .
+                                get_string('feedback_test_progress', 'block_tog') .
                                 html_writer::span('', 'dotdotdot')),
                         'progress-bar progress-bar-striped progress-bar-animated',
                         array('role' => 'progressbar', 'aria-valuenow' => '75',
@@ -219,17 +220,17 @@ if (has_capability('moodle/course:managegroups', $context)) {
         // FINISh the content
         $content .= html_writer::end_tag('form');
         $content .= html_writer::div(
-                get_string('feedback_test_alert_submit_success', 'block_task_oriented_groups'),
+                get_string('feedback_test_alert_submit_success', 'block_tog'),
                 'alert alert-success',
                 array('role' => 'alert', 'id' => 'feedback_test__alert_submit_success'
                 ));
 
         echo $content;
-        $PAGE->requires->js_call_amd('block_task_oriented_groups/feedback_test', 'initialise');
+        $PAGE->requires->js_call_amd('block_tog/feedback_test', 'initialise');
     }
 } else {
     echo html_writer::div(
-            get_string('feedback_test_alert_no_capability', 'block_task_oriented_groups'),
+            get_string('feedback_test_alert_no_capability', 'block_tog'),
             'alert alert-danger', array('role' => 'alert'
             ));
 }

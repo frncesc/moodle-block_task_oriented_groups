@@ -17,16 +17,17 @@ require_once ('../../../config.php');
 require_once ($CFG->dirroot . '/group/lib.php');
 require_once ($CFG->libdir . '/tablelib.php');
 
-use block_task_oriented_groups\Personality;
-use block_task_oriented_groups\Intelligences;
+use block_tog\Personality;
+use block_tog\Intelligences;
 
 $courseid = optional_param('courseid', 0, PARAM_INT);
 $roleid = optional_param('roleid', -1, PARAM_INT);
 $PAGE->set_pagelayout('standard');
 $PAGE->set_context(context_system::instance());
-$PAGE->set_title(get_string('composite_title', 'block_task_oriented_groups'));
-$PAGE->set_heading(get_string('composite_heading', 'block_task_oriented_groups'));
-$PAGE->set_url($CFG->wwwroot . '/blocks/task_oriented_groups/view/composite.php');
+$PAGE->set_title(get_string('composite_title', 'block_tog'));
+$PAGE->set_heading(get_string('composite_heading', 'block_tog'));
+$PAGE->set_url($CFG->wwwroot . '/blocks/tog/view/composite.php');
+$PAGE->add_body_class('block_task_oriented_group');
 
 $course = $DB->get_record('course', array('id' => $courseid
 ), '*', MUST_EXIST);
@@ -56,9 +57,9 @@ if (has_capability('moodle/course:managegroups', $context)) {
     // --- select role input ----
     $form .= html_writer::start_div('form-group');
     $form .= html_writer::tag('label',
-            get_string('composite_select_role_for_users', 'block_task_oriented_groups') .
+            get_string('composite_select_role_for_users', 'block_tog') .
             '&nbsp;&nbsp' .
-            $OUTPUT->help_icon('composite_select_role_for_users', 'block_task_oriented_groups', ''),
+            $OUTPUT->help_icon('composite_select_role_for_users', 'block_tog', ''),
             array('for' => 'selectedRoleForUsers'
             ));
     $form .= html_writer::start_tag('select',
@@ -79,12 +80,12 @@ if (has_capability('moodle/course:managegroups', $context)) {
     // --- selected users table ----
     $table = new html_table();
     $table->head = array(
-        new html_table_cell(get_string('composite_column_name', 'block_task_oriented_groups')),
+        new html_table_cell(get_string('composite_column_name', 'block_tog')),
         new html_table_cell(
-                get_string('composite_column_personality', 'block_task_oriented_groups')),
+                get_string('composite_column_personality', 'block_tog')),
         new html_table_cell(
-                get_string('composite_column_intelligences', 'block_task_oriented_groups')),
-        new html_table_cell(get_string('composite_column_send', 'block_task_oriented_groups'))
+                get_string('composite_column_intelligences', 'block_tog')),
+        new html_table_cell(get_string('composite_column_send', 'block_tog'))
     );
     $table->head[0]->attributes['class'] = 'col-6';
     $table->head[1]->attributes['class'] = 'col-2 text-center';
@@ -125,21 +126,21 @@ if (has_capability('moodle/course:managegroups', $context)) {
             if ($personality) {
                 $personalityFilled = $OUTPUT->pix_icon('i/grade_correct',
                         get_string('composite_column_personality_filled',
-                                'block_task_oriented_groups'));
+                                'block_tog'));
             } else {
                 $personalityFilled = $OUTPUT->pix_icon('i/grade_incorrect',
                         get_string('composite_column_personality_not_filled',
-                                'block_task_oriented_groups'));
+                                'block_tog'));
             }
             $intelligencesFilled = null;
             if ($intelligences) {
                 $intelligencesFilled = $OUTPUT->pix_icon('i/grade_correct',
                         get_string('composite_column_intelligences_filled',
-                                'block_task_oriented_groups'));
+                                'block_tog'));
             } else {
                 $intelligencesFilled = $OUTPUT->pix_icon('i/grade_incorrect',
                         get_string('composite_column_intelligences_not_filled',
-                                'block_task_oriented_groups'));
+                                'block_tog'));
             }
             $rowPage = floor((count($table->data)) / 5) + 1;
             $send = html_writer::empty_tag('input',
@@ -149,7 +150,7 @@ if (has_capability('moodle/course:managegroups', $context)) {
                     html_writer::span(
                             $OUTPUT->pix_icon('t/message',
                                     get_string('composite_column_send_alt',
-                                            'block_task_oriented_groups')), 'send-icon',
+                                            'block_tog')), 'send-icon',
                             array('data-userid' => $enrolledUser->id
                             ));
             $row = new html_table_row(
@@ -177,20 +178,20 @@ if (has_capability('moodle/course:managegroups', $context)) {
                 array('role' => 'alert'
                 ));
         $form .= html_writer::div(
-                get_string('composite_unfilled_msg', 'block_task_oriented_groups', $unfilled), 'row');
+                get_string('composite_unfilled_msg', 'block_tog', $unfilled), 'row');
         $form .= html_writer::div(html_writer::table($table), 'row');
         $form .= html_writer::div(
                 html_writer::tag('ul', implode($pageItems),
                         array('class' => 'pagination flex-wrap'
-                        )), 'row justify-content-md-center');
+                        )), 'row justify-content-md-center actions-row');
         $form .= html_writer::div(
                 html_writer::tag('button',
-                        get_string('composite_send_selected', 'block_task_oriented_groups'),
+                        get_string('composite_send_selected', 'block_tog'),
                         array('type' => 'button', 'class' => 'btn btn-primary',
                             'id' => 'composite__send_selected'
                         )) . '&nbsp;&nbsp;' .
                 html_writer::tag('button',
-                        get_string('composite_send_all', 'block_task_oriented_groups'),
+                        get_string('composite_send_all', 'block_tog'),
                         array('type' => 'button', 'class' => 'btn btn-primary',
                             'id' => 'composite__send_all'
                         )), 'text-center');
@@ -200,7 +201,7 @@ if (has_capability('moodle/course:managegroups', $context)) {
     if ($membersSize < 4) {
 
         $form .= html_writer::div(
-                get_string('composite_error_not_enough_users', 'block_task_oriented_groups'),
+                get_string('composite_error_not_enough_users', 'block_tog'),
                 'alert alert-danger', array('role' => 'alert'
                 ));
     } else {
@@ -222,16 +223,16 @@ if (has_capability('moodle/course:managegroups', $context)) {
         $form .= html_writer::start_tag('fieldset', array('class' => 'border p-2'
         ));
         $form .= html_writer::tag('legend',
-                get_string('composite_requirements', 'block_task_oriented_groups') . '&nbsp;&nbsp' .
-                $OUTPUT->help_icon('composite_requirements', 'block_task_oriented_groups', ''),
+                get_string('composite_requirements', 'block_tog') . '&nbsp;&nbsp' .
+                $OUTPUT->help_icon('composite_requirements', 'block_tog', ''),
                 array('class' => 'w-auto'
                 ));
         $form .= html_writer::start_div('form-row');
         $form .= html_writer::start_div('form-group col-md-4 composite-requirements-select-max');
         $form .= html_writer::tag('label',
-                get_string('composite_requirements_factor', 'block_task_oriented_groups') .
+                get_string('composite_requirements_factor', 'block_tog') .
                 '&nbsp;&nbsp' .
-                $OUTPUT->help_icon('composite_requirements_factor', 'block_task_oriented_groups', ''),
+                $OUTPUT->help_icon('composite_requirements_factor', 'block_tog', ''),
                 array('for' => 'composite__requirements_factor'
                 ));
         $form .= html_writer::start_tag('select',
@@ -240,7 +241,7 @@ if (has_capability('moodle/course:managegroups', $context)) {
         for ($i = 0; $i < 8; $i++) {
 
             $form .= html_writer::tag('option',
-                    get_string('composite_requirements_factor_' . $i, 'block_task_oriented_groups'),
+                    get_string('composite_requirements_factor_' . $i, 'block_tog'),
                     array('value' => $i, 'id' => 'composite__requirements_factor_' . $i
                     ));
         }
@@ -248,9 +249,9 @@ if (has_capability('moodle/course:managegroups', $context)) {
         $form .= html_writer::end_div();
         $form .= html_writer::start_div('form-group col-md-4 composite-requirements-select-max');
         $form .= html_writer::tag('label',
-                get_string('composite_requirements_level', 'block_task_oriented_groups') .
+                get_string('composite_requirements_level', 'block_tog') .
                 '&nbsp;&nbsp' .
-                $OUTPUT->help_icon('composite_requirements_level', 'block_task_oriented_groups', ''),
+                $OUTPUT->help_icon('composite_requirements_level', 'block_tog', ''),
                 array('for' => 'composite__requirements_level'
                 ));
         $form .= html_writer::start_tag('select',
@@ -259,7 +260,7 @@ if (has_capability('moodle/course:managegroups', $context)) {
         for ($i = 0; $i < 5; $i++) {
 
             $form .= html_writer::tag('option',
-                    get_string('composite_requirements_level_' . $i, 'block_task_oriented_groups'),
+                    get_string('composite_requirements_level_' . $i, 'block_tog'),
                     array('value' => $i, 'id' => 'composite__requirements_level_' . $i
                     ));
         }
@@ -267,9 +268,9 @@ if (has_capability('moodle/course:managegroups', $context)) {
         $form .= html_writer::end_div();
         $form .= html_writer::start_div('form-group col-md-3 composite-requirements-select-max');
         $form .= html_writer::tag('label',
-                get_string('composite_requirements_importance', 'block_task_oriented_groups') .
+                get_string('composite_requirements_importance', 'block_tog') .
                 '&nbsp;&nbsp' .
-                $OUTPUT->help_icon('composite_requirements_importance', 'block_task_oriented_groups',
+                $OUTPUT->help_icon('composite_requirements_importance', 'block_tog',
                         ''), array('for' => 'composite__requirements_importance'
                 ));
         $form .= html_writer::start_tag('select',
@@ -279,7 +280,7 @@ if (has_capability('moodle/course:managegroups', $context)) {
 
             $form .= html_writer::tag('option',
                     get_string('composite_requirements_importance_' . $i,
-                            'block_task_oriented_groups'),
+                            'block_tog'),
                     array('value' => $i, 'id' => 'composite__requirements_importance_' . $i
                     ));
         }
@@ -287,13 +288,13 @@ if (has_capability('moodle/course:managegroups', $context)) {
         $form .= html_writer::end_div();
         $form .= html_writer::div(
                 html_writer::tag('button',
-                        get_string('composite_requirements_add', 'block_task_oriented_groups'),
+                        get_string('composite_requirements_add', 'block_tog'),
                         array('class' => 'btn btn-primary', 'type' => 'button',
                             'id' => 'composite__requirements_add'
                         )), 'form-group col-md align-self-center');
         $form .= html_writer::end_div();
         $form .= html_writer::div(
-                get_string('composite_requirements_none', 'block_task_oriented_groups'),
+                get_string('composite_requirements_none', 'block_tog'),
                 'alert alert-info',
                 array('id' => 'composite__requirements_none', 'role' => 'alert'
                 ));
@@ -304,37 +305,37 @@ if (has_capability('moodle/course:managegroups', $context)) {
         // -- enter the grouping name --
         $form .= html_writer::start_div('form-group');
         $form .= html_writer::tag('label',
-                get_string('composite_grouping_name', 'block_task_oriented_groups') . '&nbsp;&nbsp' .
-                $OUTPUT->help_icon('composite_grouping_name', 'block_task_oriented_groups', ''),
+                get_string('composite_grouping_name', 'block_tog') . '&nbsp;&nbsp' .
+                $OUTPUT->help_icon('composite_grouping_name', 'block_tog', ''),
                 array('for' => 'composite__grouping_name'
                 ));
         $form .= html_writer::empty_tag('input',
                 array('id' => 'composite__grouping_name', 'type' => 'text',
                     'class' => 'form-control',
                     'placeholder' => get_string('composite_grouping_name_placeholder',
-                            'block_task_oriented_groups')
+                            'block_tog')
                 ));
         $form .= html_writer::end_div();
         // -- enter the grous pattern name --
         $form .= html_writer::start_div('form-group');
         $form .= html_writer::tag('label',
-                get_string('composite_groups_pattern', 'block_task_oriented_groups') . '&nbsp;&nbsp' .
-                $OUTPUT->help_icon('composite_groups_pattern', 'block_task_oriented_groups', ''),
+                get_string('composite_groups_pattern', 'block_tog') . '&nbsp;&nbsp' .
+                $OUTPUT->help_icon('composite_groups_pattern', 'block_tog', ''),
                 array('for' => 'composite__groups_pattern'
                 ));
         $form .= html_writer::empty_tag('input',
                 array('id' => 'composite__groups_pattern', 'type' => 'text',
                     'class' => 'form-control',
                     'value' => get_string('composite_groups_pattern_default',
-                            'block_task_oriented_groups')
+                            'block_tog')
                 ));
         $form .= html_writer::end_div();
         // -- enter members per group
         $form .= html_writer::start_div('form-group');
         $form .= html_writer::tag('label',
-                get_string('composite_members_per_group', 'block_task_oriented_groups') .
+                get_string('composite_members_per_group', 'block_tog') .
                 '&nbsp;&nbsp' .
-                $OUTPUT->help_icon('composite_members_per_group', 'block_task_oriented_groups', ''),
+                $OUTPUT->help_icon('composite_members_per_group', 'block_tog', ''),
                 array('for' => 'composite__members_per_group'
                 ));
         $form .= html_writer::empty_tag('input',
@@ -375,13 +376,13 @@ if (has_capability('moodle/course:managegroups', $context)) {
         // -- overperformance ---
         $form .= html_writer::start_div('form-group');
         $form .= html_writer::tag('label',
-                get_string('composite_performance', 'block_task_oriented_groups') . '&nbsp;&nbsp' .
-                $OUTPUT->help_icon('composite_performance', 'block_task_oriented_groups', ''),
+                get_string('composite_performance', 'block_tog') . '&nbsp;&nbsp' .
+                $OUTPUT->help_icon('composite_performance', 'block_tog', ''),
                 array('for' => 'composite__performance'
                 ));
         $form .= html_writer::start_div('row');
         $form .= html_writer::div(
-                get_string('composite_performance_over', 'block_task_oriented_groups'), 'col-md-3');
+                get_string('composite_performance_over', 'block_tog'), 'col-md-3');
         $form .= html_writer::div(
                 html_writer::empty_tag('input',
                         array('id' => 'composite__performance', 'type' => 'range',
@@ -390,19 +391,19 @@ if (has_capability('moodle/course:managegroups', $context)) {
                             'max' => '1', 'step' => '0.01'
                         )), 'col');
         $form .= html_writer::div(
-                get_string('composite_performance_under', 'block_task_oriented_groups'), 'col-md-3');
+                get_string('composite_performance_under', 'block_tog'), 'col-md-3');
         $form .= html_writer::end_div();
         $form .= html_writer::end_div();
-        $form .= html_writer::start_div('row justify-content-md-center');
+        $form .= html_writer::start_div('row justify-content-md-center actions-row');
         $form .= html_writer::tag('button',
-                get_string('composite_submit', 'block_task_oriented_groups'),
+                get_string('composite_submit', 'block_tog'),
                 array('type' => 'button', 'class' => 'btn btn-primary', 'id' => 'composite__submit'
                 ));
         $form .= html_writer::end_div();
         $form .= html_writer::div(
                 html_writer::div(
                         html_writer::span(
-                                get_string('composite_progress', 'block_task_oriented_groups') .
+                                get_string('composite_progress', 'block_tog') .
                                 html_writer::span('', 'dotdotdot')),
                         'progress-bar progress-bar-striped progress-bar-animated',
                         array('role' => 'progressbar', 'aria-valuenow' => '75',
@@ -412,9 +413,9 @@ if (has_capability('moodle/course:managegroups', $context)) {
     }
     $form .= html_writer::end_tag('form');
     echo $form;
-    $PAGE->requires->js_call_amd('block_task_oriented_groups/composite', 'initialise');
+    $PAGE->requires->js_call_amd('block_tog/composite', 'initialise');
 } else {
-    echo html_writer::div(get_string('composite_alert_no_capability', 'block_task_oriented_groups'),
+    echo html_writer::div(get_string('composite_alert_no_capability', 'block_tog'),
             'alert alert-danger', array('role' => 'alert'
             ));
 }

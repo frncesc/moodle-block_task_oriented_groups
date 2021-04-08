@@ -33,7 +33,7 @@ if [ $? -ne 0 ];
 then
 	exit 1
 fi
-PLUGIN_FILE="block_task_oriented_groups_moodle35_$VERSION.zip"
+PLUGIN_FILE="block_tog_moodle35_$VERSION.zip"
 PLUGIN_DIR="$DIR/dist"
 if [ ! -d "$PLUGIN_DIR" ]; then
   mkdir "$PLUGIN_DIR"
@@ -41,23 +41,23 @@ fi
 PLUGIN_FILE="$PLUGIN_DIR/$PLUGIN_FILE"
 
 TMP_DIR=$(mktemp -d)
-mkdir $TMP_DIR/moodle-block_task_oriented_groups
+mkdir $TMP_DIR/moodle-block_tog
 
 for file in *.md *.php *.css;
 do
-	cp $file $TMP_DIR/moodle-block_task_oriented_groups/.
+	cp $file $TMP_DIR/moodle-block_tog/.
 done
-sed -i '' -e "s/version = $CURRENT_VERSION/version = $VERSION/g" $TMP_DIR/moodle-block_task_oriented_groups/version.php
+sed -i '' -e "s/version = $CURRENT_VERSION/version = $VERSION/g" $TMP_DIR/moodle-block_tog/version.php
 
 for dir in amd classes db lang templates view;
 do
 	if [ -d "$dir" ]; then
-		cp -r $dir $TMP_DIR/moodle-block_task_oriented_groups/.
+		cp -r $dir $TMP_DIR/moodle-block_tog/.
 	fi
 done
 pushd $TMP_DIR >/dev/null
-find $PLUGIN_DIR -iname "block_task_oriented_groups_moodle35_*.zip" -exec rm {} \;
-zip -r $PLUGIN_FILE  moodle-block_task_oriented_groups >/dev/null
+find $PLUGIN_DIR -iname "block_tog_moodle35_*.zip" -exec rm {} \;
+zip -r $PLUGIN_FILE  moodle-block_tog >/dev/null
 popd >/dev/null
 rm -rf $TMP_DIR
 if [[ "$1" != "deploy" ]];
